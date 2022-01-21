@@ -34,6 +34,12 @@ a {
 
 h1,h2,h3,h4,h5,h6 {
   color: var(--gunmetal);
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 .top-bar {
@@ -80,8 +86,13 @@ h1,h2,h3,h4,h5,h6 {
   padding: 30px;
 }
 
+.banniere-container {
+  display: flex;
+}
+
 .banniere {
   width: 100%;
+  object-fit: contain;
 }
 
 .navbar {
@@ -100,7 +111,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 main {
-  padding: 10vh 9vw;
+  padding: 5vh 9vw;
 }
 
 .container {
@@ -173,7 +184,6 @@ footer h3 {
 
 h3 {
   font-size: 30px;
-  text-align: center;
 }
 
 .map-and-address {
