@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./owlcarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="./owlcarousel/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
     <title>Bibliothèque</title>
 </head>
@@ -27,9 +30,9 @@
             <img class="banniere" src="./assets/banniere.jpg" alt="">
         </div>
         <div class="navbar">
-            <a class="links-navbar home" href="./index.html">Accueil</a>
+            <a class="links-navbar bg-blue" href="./index.html">Accueil</a>
             <a class="links-navbar" href="./livres.html">Les livres</a>
-            <a class="links-navbar gender" href="./categories.html">Les genres littéraires</a>
+            <a class="links-navbar bg-blue" href="./categories.html">Les genres littéraires</a>
             <a class="links-navbar" href="./contact.html">Contact</a>
         </div>
     </header>
@@ -82,10 +85,12 @@
     <footer>
         <div class="section-footer plan-site">
             <h3>Plan du site</h3>
-            <div><a class="home" href="./index.html">Accueil</a></div>
-            <div><a href="./livres.html">Les Livres</a></div>
-            <div><a class="gender" href="./categories.html">Les Catégories</a></div>
-            <div><a href="./contact.html">Contact</a></div>
+            <div class="footer-links">
+                <div><a class="bg-blue" href="./index.html">Accueil</a></div>
+                <div><a href="./livres.html">Les Livres</a></div>
+                <div><a class="bg-blue" href="./categories.html">Les Catégories</a></div>
+                <div><a href="./contact.html">Contact</a></div>
+            </div>
         </div>
         <div class="section-footer location">
             <h3>Nous trouver</h3>
@@ -97,10 +102,11 @@
         </div>
         <div class="section-footer social">
             <h3>Suivez-nous</h3>
-            <div>
-                <img src="https://via.placeholder.com/50x50" alt="">
-                <img src="https://via.placeholder.com/50x50" alt="">
-                <img src="https://via.placeholder.com/50x50" alt="">
+            <div class="socials-links">
+                <i class="fab fa-twitter blue"></i>
+                <i class="fab fa-facebook green"></i>
+                <i class="fab fa-instagram blue"></i>
+                <i class="fab fa-youtube green"></i>
             </div>
         </div>
     </footer>
