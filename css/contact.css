@@ -1,0 +1,94 @@
+:root {
+  --gunmetal: #19323c;
+  --turquoise-green: #bbdfc5;
+  --acid-green: #92ba00;
+  --tyrian-purple: #6a0136;
+  --maximum-blue: #53a2be;
+}
+
+.row-section {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-form,
+.contact-info {
+  border: 1px solid black;
+  padding: 0;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-form {
+  margin: 0px 0px 20px 20px;
+}
+
+.contact-form-header,
+.contact-info-header {
+  width: 100%;
+  height: 81px;
+  background-color: var(--gunmetal);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact-form-titles,
+.contact-info-titles {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.card-title {
+  color: var(--acid-green);
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-form-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-inputs {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-form-inputs-container {
+  width: 100%;
+}
+
+label {
+    color: var(--gunmetal);
+}
+
+input {
+  width: 100%;
+}
+
+.contact-form-textarea {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.contact-info {
+  margin: 0px 20px 20px 0px;
+}
+
+.contact-informations {
+    color: var(--gunmetal);
+}
