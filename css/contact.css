@@ -44,6 +44,7 @@
   justify-content: center;
   align-items: center;
   color: white;
+  text-align: center;
 }
 
 .card-title {
@@ -55,7 +56,8 @@ form {
   height: 100%;
 }
 
-.contact-form-body {
+.contact-form-body,
+.contact-info-body {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -72,7 +74,7 @@ form {
 }
 
 label {
-    color: var(--gunmetal);
+  color: var(--gunmetal);
 }
 
 input {
@@ -90,5 +92,10 @@ input {
 }
 
 .contact-informations {
-    color: var(--gunmetal);
+  color: var(--gunmetal);
+}
+
+.contact-info-container {
+  width: 100%;
+  height: 100%;
 }
