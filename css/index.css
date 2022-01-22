@@ -238,7 +238,6 @@ footer h3 {
 }
 
 .section-footer {
-  border: 1px solid black;
   width: 100%;
   padding: 15px;
   display: flex;
@@ -256,10 +255,6 @@ footer h3 {
   width: 15%;
   text-align: center;
   margin: 10px;
-}
-
-.section-footer a {
-  border: 1px solid black;
 }
 
 .map-and-address {
@@ -282,4 +277,11 @@ iframe {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.btn-social {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 15%;
+  text-align: center;
 }
