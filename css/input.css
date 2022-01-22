@@ -1,0 +1,23 @@
+:root {
+    --gunmetal: #19323c;
+    --turquoise-green: #bbdfc5;
+    --acid-green: #92ba00;
+    --tyrian-purple: #6a0136;
+    --maximum-blue: #53a2be;
+    --maximum-blue-darken: #428299;
+  }
+
+.inpt30 {
+    position: relative;
+    border: 0px;
+    border-radius: 2em;
+    box-shadow: inset 0px 0px 5px var(--gunmetal);
+}
+
+.inpt30:focus {
+    outline: solid var(--tyrian-purple);
+}
+
+::placeholder {
+    color: var(--gunmetal);
+}

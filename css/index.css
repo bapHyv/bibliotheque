@@ -104,6 +104,21 @@ h4 {
   margin-left: 20px;
 }
 
+.search-input-top-bar {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+}
+
+.input-search-book {
+  width: 70%;
+}
+
+.button-search-book {
+  width: 20%;
+}
+
 .account-and-subscribe {
   display: flex;
   align-items: center;

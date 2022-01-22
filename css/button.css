@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'Cocogoose';
+  src: url('../fonts/Cocogoose.eot') format('eot');
+  src: url('../fonts/Cocogoose.woff') format('woff'),
+    url('../fonts/Cocogoose.woff2') format('woff2'),
+    url('../fonts/Cocogoose.otf') format('otf'),
+    url('../fonts/Cocogoose.ttf') format('ttf');
+}
+
+:root {
+  --gunmetal: #19323c;
+  --turquoise-green: #bbdfc5;
+  --acid-green: #92ba00;
+  --tyrian-purple: #6a0136;
+  --maximum-blue: #53a2be;
+  --maximum-blue-darken: #428299;
+}
+
+.bn30 {
+  color: var(--tyrian-purple);
+  background-color: var(--maximum-blue);
+  border: 0.16em solid var(--tyrian-purple);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Cocogoose';
+  font-weight: 300;
+  color: var(--gunmetal);
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.253);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.bn30:hover {
+  cursor: pointer;
+  color: var(--maximum-blue);
+  background-color: var(--tyrian-purple);
+  border: 0.16em solid var(--maximum-blue);
+}
