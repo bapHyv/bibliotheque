@@ -15,7 +15,9 @@
 }
 
 .inpt30:focus {
-    outline: solid var(--tyrian-purple);
+    outline: solid var(--acid-green);
+    box-shadow: 0px 0px 15px var(--acid-green);
+
 }
 
 ::placeholder {

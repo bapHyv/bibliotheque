@@ -11,6 +11,7 @@
   --gunmetal: #19323c;
   --turquoise-green: #bbdfc5;
   --acid-green: #92ba00;
+  --acid-green-darken: #506600;
   --tyrian-purple: #6a0136;
   --maximum-blue: #53a2be;
   --maximum-blue-darken: #428299;
@@ -50,7 +51,6 @@ body {
 a {
   text-decoration: none;
   color: var(--gunmetal);
-  background-color: var(--acid-green);
 }
 
 h1,
@@ -88,24 +88,27 @@ h4 {
 }
 
 .logo-and-name {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 0px;
+}
+
+.link-logo {
+  width: 35%;
+  background-color: var(--acid-green);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  padding: 10px;
+  margin-left: 10px;
 }
 
 .logo {
-  height: 60px;
-}
-
-.name {
-  font-size: 30px;
-  margin-left: 20px;
+  height: 40px;
 }
 
 .search-input-top-bar {
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
@@ -121,27 +124,24 @@ h4 {
 
 .account-and-subscribe {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
+  width: 25%;
+  padding: 20px 0px;
+
 }
 
-.account-and-subscribe a {
+.link-topbar {
+  color:var(--acid-green);
   background-color: var(--tyrian-purple);
-  color: var(--acid-green);
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+  margin-right: 10px;
 }
 
 .icons-top-bar {
   margin-right: 10px;
-}
-
-.account {
-  border: 1px solid black;
-  padding: 30px;
-}
-
-.subscribe {
-  border: 1px solid black;
-  padding: 30px;
 }
 
 .banniere-container {
@@ -155,7 +155,7 @@ h4 {
 
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: var(--gunmetal);
 }
 
@@ -171,9 +171,11 @@ h4 {
   color: var(--acid-green);
 }
 
-.links-navbar {
-  border: 1px solid black;
-  padding: 30px;
+.link-navbar {
+  padding: 20px;
+  width: 5%;
+  text-align: center;
+  margin: 10px;
 }
 
 main {
@@ -243,10 +245,17 @@ footer h3 {
   flex-direction: column;
 }
 
-.footer-links {
+.links-footer-container {
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.link-footer {
+  padding: 10px;
+  width: 15%;
+  text-align: center;
+  margin: 10px;
 }
 
 .section-footer a {
