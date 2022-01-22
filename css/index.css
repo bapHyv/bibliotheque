@@ -37,6 +37,16 @@
   background: var(--maximum-blue-darken); 
 }
 
+h1::selection {
+  color: var(--turquoise-green);
+  background-color: var(--maximum-blue);
+}
+
+h2::selection {
+  color: white;
+  background-color: var(--tyrian-purple);
+}
+
 * {
   margin: 0;
   padding: 0;
