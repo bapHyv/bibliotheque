@@ -27,7 +27,7 @@
 .btn-blue:hover {
   color: var(--gunmetal);
   background: linear-gradient(0.12turn, #92ba00, #53a2be);
-  border: 2px solid var(--maximum-blue);
+  border: 2px solid linear-gradient(0.12turn, #53a2be, #92ba00);
   box-shadow: 0px 0px 5px var(--maximum-blue);
 }
 
@@ -42,7 +42,7 @@
 .btn-green:hover {
   color: var(--gunmetal);
   background: linear-gradient(0.12turn, #53a2be, #92ba00);
-  border: 2px solid var(--acid-green);
+  border: 2px solid linear-gradient(0.12turn, #92ba00, #53a2be);
   box-shadow: 0px 0px 5px var(--acid-green);
 }
 
