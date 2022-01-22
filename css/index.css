@@ -183,20 +183,28 @@ main {
 }
 
 .container {
-  border: 1px solid black;
+  border: 1px solid var(--gunmetal);
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px var(--gunmetal);
   background-color: white;
-}
-
-.container-first-title {
-  margin-top: 30px;
+  background-color: var(--gunmetal);
 }
 
 section {
-  padding: 1vh 1vw;
+  margin: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--gunmetal);
+  border-radius: 20px;
+  box-shadow: inset 0px 0px 8px var(--gunmetal);
+  background-color: white;
+}
+
+.title-container {
+  color:var(--tyrian-purple)
 }
 
 .owl-nav,
