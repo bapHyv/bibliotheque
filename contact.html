@@ -12,38 +12,44 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/input.css">
     <title>Contact</title>
 </head>
 
 <body>
     <header>
         <div class="top-bar">
-            <a href="./index.html" class="logo-and-name">
-                <img class="logo" src="./assets/logo.png" alt="">
-                <p class="name">Bibliothèque</p>
-            </a>
-            <div>
-                <input type="text" name="researchBook" placeholder="Rechercher un livre">
-                <button>Rechercher</button>
+            <div class="logo-and-name">
+                <a class="link-logo btn-logo" href="./index.html">
+                    <img class="logo" src="./assets/logo.png" alt="">
+                    <p class="name">Bibliothèque</p>
+                </a>
+            </div>
+            <div class="search-input-top-bar">
+                <input class="input-search-book inpt30" type="text" name="researchBook"
+                    placeholder="Rechercher un livre">
+                <button class="button-search-book btn-blue btn">Rechercher</button>
             </div>
             <div class="account-and-subscribe">
-                <a class="account" href="#">Mon compte</a>
-                <a class="subscribe" href="#">S'inscrire</a>
+                <a class="link-topbar btn-purple" href="#"><i class="fas fa-user-circle icons-top-bar"></i>Mon
+                    compte</a>
+                <a class="link-topbar btn-purple" href="#"><i class="fas fa-check icons-top-bar"></i>S'inscrire</a>
             </div>
         </div>
         <div class="banniere-container">
             <img class="banniere" src="./assets/banniere.jpg" alt="">
         </div>
         <div class="navbar">
-            <a class="links-navbar bg-blue" href="./index.html">Accueil</a>
-            <a class="links-navbar" href="./livres.html">Les livres</a>
-            <a class="links-navbar bg-blue" href="./categories.html">Les genres littéraires</a>
-            <a class="links-navbar" href="./contact.html">Contact</a>
+            <a class="link-navbar btn-blue" href="./index.html">Accueil</a>
+            <a class="link-navbar btn-green" href="./livres.html">Livres</a>
+            <a class="link-navbar btn-blue" href="./categories.html">Genres</a>
+            <a class="link-navbar btn-green" href="./contact.html">Contact</a>
         </div>
     </header>
     <main>
+        <h1>Contact</h1>
         <div class="container">
-            <h2 class="container-first-title">Contact</h2>
             <div class="row-section">
                 <section class="contact-form">
                     <div class="contact-form-header">
@@ -109,7 +115,7 @@
                             <div class="contact-location">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.8637856445685!2d-1.4735480841658928!3d43.50517707000725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5140e52167421f%3A0x363e8553b5656d92!2sAfpa!5e0!3m2!1sen!2sfr!4v1642764812627!5m2!1sen!2sfr"
-                                    width="300" height="250" style="border:0;" allowfullscreen=""
+                                    width="600" height="300" style="border:0;" allowfullscreen=""
                                     loading="lazy"></iframe>
                             </div>
                         </div>
@@ -122,11 +128,11 @@
     <footer>
         <div class="section-footer plan-site">
             <h3>Plan du site</h3>
-            <div class="footer-links">
-                <div><a class="bg-blue" href="./index.html">Accueil</a></div>
-                <div><a href="./livres.html">Les Livres</a></div>
-                <div><a class="bg-blue" href="./categories.html">Les Catégories</a></div>
-                <div><a href="./contact.html">Contact</a></div>
+            <div class="links-footer-container">
+                <a class="link-footer btn-blue" href="./index.html">Accueil</a>
+                <a class="link-footer btn-green" href="./livres.html">Livres</a>
+                <a class="link-footer btn-blue" href="./categories.html">Genre</a>
+                <a class="link-footer btn-green" href="./contact.html">Contact</a>
             </div>
         </div>
         <div class="section-footer location">
@@ -140,10 +146,10 @@
         <div class="section-footer social">
             <h3>Suivez-nous</h3>
             <div class="socials-links">
-                <i class="fab fa-twitter blue"></i>
-                <i class="fab fa-facebook green"></i>
-                <i class="fab fa-instagram blue"></i>
-                <i class="fab fa-youtube green"></i>
+                <a class="btn-social btn-blue" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn-social btn-green" href="#"><i class="fab fa-facebook"></i></a>
+                <a class="btn-social btn-blue" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn-social btn-green" href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>

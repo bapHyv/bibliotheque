@@ -14,7 +14,6 @@
 
 .contact-form,
 .contact-info {
-  border: 1px solid black;
   padding: 0;
   width: 40%;
   display: flex;
@@ -22,15 +21,17 @@
   justify-content: space-between;
 }
 
-.contact-form {
-  margin: 0px 0px 20px 20px;
+.contact-form, .contact-info  {
+  margin: 20px;
 }
 
 .contact-form-header,
 .contact-info-header {
   width: 100%;
   height: 81px;
-  background-color: var(--gunmetal);
+  background-color: var(--tyrian-purple);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -85,10 +86,6 @@ input {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-}
-
-.contact-info {
-  margin: 0px 20px 20px 0px;
 }
 
 .contact-informations {
