@@ -110,6 +110,12 @@
         <span>Utilisateurs</span></a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link" href="<?= URL_ADMIN?>/usager/index.php">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Usager</span></a>
+</li>
+
 <!-- Nav Item - Tables -->
 <li class="nav-item">
     <a class="nav-link" href="tables.html">
