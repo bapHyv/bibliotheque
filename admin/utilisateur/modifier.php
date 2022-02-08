@@ -63,7 +63,7 @@
         <label for="code_postal" class="form-label">Code postal : </label>
         <input type="text" class="form-control" name="code_postal" id="code_postal" value="<?= $utilisateur['code_postal'] ?>">
 
-        <input type="submit" class="btn btn-success mt-5" name="ajouter_utilisateur">
+        <input type="submit" class="btn btn-success mt-5" name="modifier_utilisateur">
         <a href="<?= URL_ADMIN ?>utilisateur/index.php" class="btn btn-danger mt-5">Annuler</a>
 
     </form>
