@@ -93,27 +93,33 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= URL_ADMIN?>/contacts/index.php">
+    <a class="nav-link" href="<?= URL_ADMIN?>contacts/index.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Contact</span></a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="<?= URL_ADMIN?>/auteur/index.php">
+    <a class="nav-link" href="<?= URL_ADMIN?>auteur/index.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Auteurs</span></a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="<?= URL_ADMIN?>/utilisateur/index.php">
+    <a class="nav-link" href="<?= URL_ADMIN?>utilisateur/index.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Utilisateurs</span></a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="<?= URL_ADMIN?>/usager/index.php">
+    <a class="nav-link" href="<?= URL_ADMIN?>usager/index.php">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Usager</span></a>
+        <span>Usagers</span></a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="<?= URL_ADMIN?>categorie/index.php">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Catégories</span></a>
 </li>
 
 <!-- Nav Item - Tables -->
