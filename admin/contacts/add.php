@@ -1,6 +1,5 @@
 <?php 
-    // Ajouter une prise de contact
-    
+    include '../config/config.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -32,7 +31,7 @@
         </div>
         <div class="mb-3 text-center">
             <input type="submit" name="btn_add_contact" class="btn btn-primary">
-            <a href="http://localhost:8888/projet_bibliotheque_clone/admin/contacts/index.php" class="btn btn-warning">Annuler</a>
+            <a href="<?= URL_ADMIN ?>/contacts/index.php" class="btn btn-warning">Annuler</a>
         </div>
     </form>
     </div>

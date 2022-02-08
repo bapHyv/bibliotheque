@@ -1,6 +1,6 @@
-<?php 
-    // Modifier une prise de contact
+<?php
 
+    include '../config/config.php';
     include 'bdd.php';
 
     if (isset($_GET['id'])){
@@ -63,7 +63,7 @@
         </div>
         <div class="mb-3 text-center">
             <input type="submit" name="btn_update_contact" class="btn btn-warning">
-            <a href="http://localhost:8888/projet_bibliotheque_clone/admin/contacts/index.php" class="btn btn-primary">Annuler</a>
+            <a href="<?= URL_ADMIN ?>contacts/index.php" class="btn btn-primary">Annuler</a>
         </div>
     </form>
     </div>

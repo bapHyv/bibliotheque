@@ -1,6 +1,7 @@
 <?php
 
     include './bdd.php';
+    include '../config/config.php';
 
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
@@ -60,7 +61,7 @@
         <input type="text" class="form-control" name="photo" id="photo" value=<?= $auteur['photo']?>>
 
         <input type="submit" class="btn btn-success mt-5" name="modifier_auteur">
-        <a href="http://localhost:8888/projet_bibliotheque_clone/admin/auteur/index.php" class="btn btn-danger mt-5">Annuler</a>
+        <a href="<?= URL_ADMIN ?>auteur/index.php" class="btn btn-danger mt-5">Annuler</a>
 
     </form>
     </div>

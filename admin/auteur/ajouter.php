@@ -1,5 +1,5 @@
 <?php
-// Ajouter une prise de contact
+  include '../config/config.php'
 ?>
 <!doctype html>
 <html lang="fr">
@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container">
-    <h1 class="text-center">Ajouter un auteur</h1>
+    <h1 class="text-center mt-5">Ajouter un auteur</h1>
     <form action="action.php" method="POST">
         <label for="nom" class="form-label">Nom : </label>
         <input type="text" class="form-control" name="nom" id="nom">
@@ -41,7 +41,7 @@
         <input type="text" class="form-control" name="photo" id="photo">
 
         <input type="submit" class="btn btn-success mt-5" name="ajouter_auteur">
-        <a href="http://localhost:8888/projet_bibliotheque_clone/admin/auteur/index.php" class="btn btn-danger mt-5">Annuler</a>
+        <a href="<?= URL_ADMIN ?>auteur/index.php" class="btn btn-danger mt-5">Annuler</a>
 
     </form>
     </div>

@@ -1,5 +1,6 @@
 <?php
     include './bdd.php';
+    include '../config/config.php';
 
     if (isset($_POST['ajouter_auteur'])) {
         $nom = htmlentities($_POST['nom']);
@@ -31,11 +32,11 @@
         );
 
         if ($requete->execute($data)) {
-            header('location:index.php');
+            header('location:' . URL_ADMIN . '/auteur/index.php');
             die;
         } else {
             echo '<p>PROBLEME AVEC LA BDD</p>';
-            header('location:ajouter.php');
+            header('location:' . URL_ADMIN . '/auteur/ajouter.php');
             die;
         }
     }
@@ -70,10 +71,10 @@
         );
 
         if ($requete->execute($data)) {
-            header('location:index.php');
+            header('location:' . URL_ADMIN . '/auteur/index.php');
             die;
         } else {
-            header('location:ajouter.php?id' . $id);
+            header('location:' . URL_ADMIN . '/auteur/modifier.php?id=' . $id);
             die;
         }
     }
@@ -85,10 +86,10 @@
             $requete = $bdd->prepare($sql);
             $data = array(':id' => $id);
             if ($requete->execute($data)) {
-                header('location:index.php');
+                header('location:' . URL_ADMIN . '/auteur/index.php');
                 die;
             } else {
-                header('location:index.php');
+                header('location:' . URL_ADMIN . '/auteur/index.php');
                 die;
             }
         }
