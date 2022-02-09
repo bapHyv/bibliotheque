@@ -1,0 +1,11 @@
+img {
+    height: 600px;
+}
+
+.img-resume {
+    display: flex;
+}
+
+.resume {
+    text-align: justify;
+}

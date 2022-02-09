@@ -128,6 +128,12 @@
         <span>Éditeurs</span></a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link" href="<?= URL_ADMIN?>livre/index.php">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Livres</span></a>
+</li>
+
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
