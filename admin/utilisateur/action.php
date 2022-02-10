@@ -16,7 +16,6 @@
         $code_postal = htmlentities($_POST['code_postal']);
 
         $target = URL_INCLUDE . 'img/utilisateur/' . $_FILES['avatar']['name'];
-
         move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
 
         $sql = 'INSERT INTO utilisateur VALUES (NULL, :nom, :prenom, :pseudo, :mail, :mdp, :numero, :avatar, :adresse, :ville, :code_postal)';
@@ -62,9 +61,12 @@
         $ville = htmlentities($_POST['ville']);
         $code_postal = htmlentities($_POST['code_postal']);
 
-        $target = URL_INCLUDE . 'img/utilisateur/' . $_FILES['avatar']['name'];
-
-        move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
+        if ($avatar == '') {
+            $avatar = htmlentities($_POST['avatar_hidden']);
+        } else {
+            $target = URL_INCLUDE . 'img/utilisateur/' . $_FILES['avatar']['name'];
+            move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
+        }
 
         $sql = 'UPDATE utilisateur SET nom = :nom, prenom = :prenom, pseudo = :pseudo, mail = :mail, mot_de_passe = :mdp, num_telephone = :numero, avatar = :avatar, adresse = :adresse, ville = :ville, code_postal = :code_postal WHERE id = :id LIMIT 1';
     

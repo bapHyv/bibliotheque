@@ -90,19 +90,19 @@
                                     <tr>
                                         <!-- AFFICHAGE DES CHAMPS -->
                                         <th scope="row"><?= $livre['id'] ?></th>
-                                        <th scope="row"><?= $livre['num_ISBN'] ?></th>
-                                        <th scope="row"><?= $livre['titre'] ?></th>
-                                        <th scope="row"><img style="width: 40%;" class="illustration" src="<?= URL_ADMIN ?>img/livre/<?= $livre['illustration'] ?>" alt="<?= $livre['titre'] ?>"></th>
+                                        <th><?= $livre['num_ISBN'] ?></th>
+                                        <th><?= $livre['titre'] ?></th>
+                                        <th><img style="width: 40%;" class="illustration" src="<?= URL_ADMIN ?>img/livre/<?= $livre['illustration'] ?>" alt="<?= $livre['titre'] ?>"></th>
                                         <?php $resume = mb_substr($livre['resume'], 0, 100, 'UTF-8');?>
-                                        <th scope="row"><?php echo $resume; ?>...</th>
-                                        <th scope="row"><?= $livre['prix'] ?></th>
-                                        <th scope="row"><?= $livre['nb_pages'] ?></th>
-                                        <th scope="row"><?= $livre['date_achat'] ?></th>
+                                        <th><?php echo $resume; ?>...</th>
+                                        <th><?= $livre['prix'] ?></th>
+                                        <th><?= $livre['nb_pages'] ?></th>
+                                        <th><?= $livre['date_achat'] ?></th>
                                         <?php
                                             if ($livre['disponibilite']) {
-                                                echo '<th class="green" scope="row">disponible</th>';
+                                                echo '<th class="green">disponible</th>';
                                             } else {
-                                                echo '<th class="red" scope="row">loué</th>';
+                                                echo '<th class="red">loué</th>';
                                             }
                                         
                                         ?>

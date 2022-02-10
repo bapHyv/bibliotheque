@@ -63,7 +63,8 @@
 
         <label for="avatar" class="form-label">Avatar : </label>
         <input type="file" class="form-control" name="avatar" id="avatar">
-                
+        <input type="hidden" name="avatar_hidden" value="<?= $utilisateur['avatar'] ?>">
+
         <label for="adresse" class="form-label">Adresse : </label>
         <input type="text" class="form-control" name="adresse" id="adresse" value="<?= $utilisateur['adresse'] ?>">
 

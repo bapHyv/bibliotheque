@@ -54,9 +54,12 @@ if (isset($_POST['modifier_livre'])) {
     $nb_pages = intval($_POST['nb_pages']);
     $disponibilite = boolval($_POST['disponibilite']);
 
-    $target = URL_INCLUDE . 'img/livre/' . $_FILES['illustration']['name'];
-
-    move_uploaded_file($_FILES['illustration']['tmp_name'], $target);
+    if ($illustration == '') {
+        $illustration = htmlentities($_POST['illustration_hidden']);
+    } else {
+        $target = URL_INCLUDE . 'img/livre/' . $_FILES['illustration']['name'];
+        move_uploaded_file($_FILES['illustration']['tmp_name'], $target);
+    }
 
     $sql =
         'UPDATE livre SET num_ISBN = :num_ISBN, titre = :titre, illustration = :illustration, resume = :resume, prix = :prix, nb_pages = :nb_pages, disponibilite = :disponibilite WHERE id = :id LIMIT 1';

@@ -41,7 +41,8 @@
 
         <label for="illustration" class="form-label">Illustration : </label>
         <input type="file" class="form-control" name="illustration" id="illustration" value="<?= $livre['illustration'] ?>">
-
+        <input type="hidden" name="illustration_hidden" value="<?= $livre['illustration']?>">
+        
         <label for="resume" class="form-label">Résumé : </label>
         <input type="text" class="form-control" name="resume" id="resume" value="<?= $livre['resume'] ?>">
 

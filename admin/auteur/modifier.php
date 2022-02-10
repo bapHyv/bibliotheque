@@ -65,7 +65,8 @@
         <input type="text" class="form-control" name="numero" id="numero" value="<?= $auteur['numero']?>">
 
         <label for="photo" class="form-label">Photo : </label>
-        <input type="file" class="form-control" name="photo" id="photo" value="<?= URL_ADMIN . 'img/auteur/' . $auteur['photo']?>">
+        <input type="file" class="form-control" name="photo" id="photo">
+        <input type="hidden" name="photo_hidden" value="<?= $auteur['photo']?>">
 
         <input type="submit" class="btn btn-success mt-5" name="modifier_auteur">
         <a href="<?= URL_ADMIN ?>auteur/index.php" class="btn btn-danger mt-5">Annuler</a>

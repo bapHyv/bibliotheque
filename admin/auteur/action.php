@@ -59,10 +59,13 @@
         $mail = htmlentities($_POST['mail']);
         $numero = htmlentities($_POST['numero']);
         $photo = htmlentities($_FILES['photo']['name']);
-
-        $target = URL_INCLUDE . 'img/auteur/' . $_FILES['photo']['name'];
-
-        move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+        
+        if ($photo == '') {
+            $photo = htmlentities($_POST['photo_hidden']);
+        } else {
+            $target = URL_INCLUDE . 'img/auteur/' . $_FILES['photo']['name'];
+            move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+        }
 
         $sql = 'UPDATE auteur SET nom = :nom, prenom = :prenom, nom_de_plume = :nom_de_plume, adresse = :adresse, ville = :ville, code_postal = :code_postal, mail = :mail, numero = :numero, photo = :photo WHERE id = :id LIMIT 1';
 
