@@ -12,6 +12,16 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un livre</h1>
+
+    <?php if (
+        isset($_SESSION['error_livre']) &&
+        $_SESSION['error_livre'] == true
+    ) {
+        alert($_SESSION['message_error'], 'error');
+        unset($_SESSION['error_livre']);
+        unset($_SESSION['message_error']);
+    }?>
+
     <form action="<?= URL_ADMIN ?>livre/action.php" method="POST" enctype='multipart/form-data'>
 
         <label for="num_ISBN" class="form-label">Numéro ISBN : </label>

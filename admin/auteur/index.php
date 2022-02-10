@@ -1,7 +1,8 @@
 <?php
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
 
     $sql = 'SELECT * FROM auteur';
 
@@ -59,6 +60,17 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des auteurs</h1>
+
+                        <?php if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == false) {
+                            alert($_SESSION['message_error'], "success");
+                            unset($_SESSION['error_auteur']);
+                            unset($_SESSION['message_error']);
+                        } else {
+                            alert($_SESSION['message_error'], "error");
+                            unset($_SESSION['error_auteur']);
+                            unset($_SESSION['message_error']);
+                        } ?>
+
                         <a href="<?= URL_ADMIN ?>auteur/ajouter.php" class="btn btn-success mb-3">Ajouter un auteur</a>
                         <table class="table">
                             <thead>
@@ -91,9 +103,9 @@
                                         <td><?= $auteur['code_postal'] ?></td>
                                         <td><?= $auteur['mail'] ?></td>
                                         <td><?= $auteur['numero'] ?></td>
-                                        <td><?= $auteur['photo'] ?></td>
-                                        <td><a href="<?= URL_ADMIN ?>auteur/modifier.php/?id=<?= $auteur['id'] ?>" class="btn btn-warning">Modifier</a></td>
-                                        <td><a href="<?= URL_ADMIN ?>auteur/action.php/?id=<?= $auteur['id'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                        <td><img style="width: 40%;" src="<?= URL_ADMIN ?>img/auteur/<?= $auteur['photo'] ?>" alt="<?= $auteur['prenom'] ?> <?= $auteur['nom'] ?>"></td>
+                                        <td><a href="<?= URL_ADMIN ?>auteur/modifier.php?id=<?= $auteur['id'] ?>" class="btn btn-warning">Modifier</a></td>
+                                        <td><a href="<?= URL_ADMIN ?>auteur/action.php?id=<?= $auteur['id'] ?>" class="btn btn-danger">Supprimer</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

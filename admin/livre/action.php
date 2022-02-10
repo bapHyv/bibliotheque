@@ -30,9 +30,7 @@ if (isset($_POST['ajouter_livre'])) {
     ':disponibilite' => $disponibilite
     );
 
-    $requete->execute($data);
- 
-    if (true) {
+    if ($requete->execute($data)) {
        $_SESSION['error_livre'] = false;
        $_SESSION['message_error'] = 'Vous avez bien ajouter: "<b>' . $titre . '</b>"';
        header('location:' . URL_ADMIN . 'livre/index.php');
@@ -45,7 +43,7 @@ if (isset($_POST['ajouter_livre'])) {
        die();
     }
  }
- 
+
 if (isset($_POST['modifier_livre'])) {
     $id = intval($_POST['id']);
     $num_ISBN = htmlentities($_POST['num_ISBN']);

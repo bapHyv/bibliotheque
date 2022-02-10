@@ -1,7 +1,8 @@
 <?php
 
-    include './bdd.php';
     include '../config/config.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
 
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
@@ -23,18 +24,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Modifier un auteur</title>
+    <title>Modifier <?= $auteur['prenom'] . ' ' . $auteur['nom']?></title>
   </head>
   <body>
     <div class="container">
       <?php
-        echo '<h1 class="text-center mt-5">Modifier ' . $auteur['prenom'] . ' ' . $auteur['nom'] .'</h1>'
+        echo '<h1 class="text-center mt-5">Modifier ' . $auteur['prenom'] . ' ' . $auteur['nom'] .'</h1>';
+
+        if (
+          isset($_SESSION['error_auteur']) &&
+          $_SESSION['error_auteur'] == true
+      ) {
+          alert($_SESSION['message_error'], 'error');
+          unset($_SESSION['error_auteur']);
+          unset($_SESSION['message_error']);
+      }
       ?>
-    <form action="<?= URL_ADMIN?>auteur/action.php" method="POST">
-        <input type="hidden" name="id" value=<?= $auteur['id']?>>
+    <form action="<?= URL_ADMIN?>auteur/action.php" method="POST" enctype='multipart/form-data'>
+        <input type="hidden" name="id" value="<?= $auteur['id']?>">
 
         <label for="nom" class="form-label">Nom : </label>
-        <input type="text" class="form-control" name="nom" id="nom" value=<?= $auteur['nom']?>>
+        <input type="text" class="form-control" name="nom" id="nom" value="<?= $auteur['nom']?>">
 
         <label for="prenom" class="form-label">Prénom : </label>
         <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $auteur['prenom']?>">
@@ -43,22 +53,22 @@
         <input type="text" class="form-control" name="nom_de_plume" id="nom_de_plume" value="<?= $auteur['nom_de_plume']?>">
 
         <label for="adresse" class="form-label">Adresse : </label>
-        <input type="text" class="form-control" name="adresse" id="adresse" value=<?= $auteur['adresse']?>>
+        <input type="text" class="form-control" name="adresse" id="adresse" value="<?= $auteur['adresse']?>">
 
         <label for="ville" class="form-label">Ville : </label>
-        <input type="text" class="form-control" name="ville" id="ville" value=<?= $auteur['ville']?>>
+        <input type="text" class="form-control" name="ville" id="ville" value="<?= $auteur['ville']?>">
 
         <label for="code_postal" class="form-label">Code postal : </label>
-        <input type="text" class="form-control" name="code_postal" id="code_postal" value=<?= $auteur['code_postal']?>>
+        <input type="text" class="form-control" name="code_postal" id="code_postal" value="<?= $auteur['code_postal']?>">
 
         <label for="mail" class="form-label">Mail : </label>
-        <input type="text" class="form-control" name="mail" id="mail" value=<?= $auteur['mail']?>>
+        <input type="text" class="form-control" name="mail" id="mail" value="<?= $auteur['mail']?>">
 
         <label for="numero" class="form-label">Numero : </label>
-        <input type="text" class="form-control" name="numero" id="numero" value=<?= $auteur['numero']?>>
+        <input type="text" class="form-control" name="numero" id="numero" value="<?= $auteur['numero']?>">
 
         <label for="photo" class="form-label">Photo : </label>
-        <input type="text" class="form-control" name="photo" id="photo" value=<?= $auteur['photo']?>>
+        <input type="file" class="form-control" name="photo" id="photo" value="<?= URL_ADMIN . 'img/auteur/' . $auteur['photo']?>">
 
         <input type="submit" class="btn btn-success mt-5" name="modifier_auteur">
         <a href="<?= URL_ADMIN ?>auteur/index.php" class="btn btn-danger mt-5">Annuler</a>
