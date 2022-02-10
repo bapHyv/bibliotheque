@@ -34,7 +34,7 @@
     <?php
     
       if (isset($_SESSION['error_utilisateur']) && $_SESSION['error_utilisateur'] == true) {
-        alert($_SESSION['message_error'], 'error');
+        alert($_SESSION['message_error'], 'danger');
         unset($_SESSION['error_utilisateur']);
         unset($_SESSION['message_error']);
     }?>

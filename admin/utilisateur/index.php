@@ -61,8 +61,8 @@
                             alert($_SESSION['message_error'], "success");
                             unset($_SESSION['error_utilisateur']);
                             unset($_SESSION['message_error']);
-                        } else {
-                            alert($_SESSION['message_error'], "error");
+                        } if (isset($_SESSION['error_utilisateur']) && $_SESSION['error_utilisateur'] == true) {
+                            alert($_SESSION['message_error'], "danger");
                             unset($_SESSION['error_utilisateur']);
                             unset($_SESSION['message_error']);
                         } ?>

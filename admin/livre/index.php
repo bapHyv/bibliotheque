@@ -10,7 +10,6 @@
 
     $livres = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-    var_dump($_SESSION);
 ?>
 
 
@@ -63,8 +62,8 @@
                             alert($_SESSION['message_error'], "success");
                             unset($_SESSION['error_livre']);
                             unset($_SESSION['message_error']);
-                        } else {
-                            alert($_SESSION['message_error'], "error");
+                        } if (isset($_SESSION['error_livre']) && $_SESSION['error_livre'] == true) {
+                            alert($_SESSION['message_error'], "danger");
                             unset($_SESSION['error_livre']);
                             unset($_SESSION['message_error']);
                         } ?>

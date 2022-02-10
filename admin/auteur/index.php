@@ -65,8 +65,9 @@
                             alert($_SESSION['message_error'], "success");
                             unset($_SESSION['error_auteur']);
                             unset($_SESSION['message_error']);
-                        } else {
-                            alert($_SESSION['message_error'], "error");
+                        }
+                        if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == true) {
+                            alert($_SESSION['message_error'], "danger");
                             unset($_SESSION['error_auteur']);
                             unset($_SESSION['message_error']);
                         } ?>

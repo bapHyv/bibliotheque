@@ -1,7 +1,9 @@
 <?php 
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
+
 
     $sql = "SELECT * FROM usager";
 
@@ -55,6 +57,18 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des usagers</h1>
+
+                        <?php if (isset($_SESSION['error_usager']) && $_SESSION['error_usager'] == false) {
+                            alert($_SESSION['message_error'], "success");
+                            unset($_SESSION['error_usager']);
+                            unset($_SESSION['message_error']);
+                        }
+                        if (isset($_SESSION['error_usager']) && $_SESSION['error_usager'] == true) {
+                            alert($_SESSION['message_error'], "danger");
+                            unset($_SESSION['error_usager']);
+                            unset($_SESSION['message_error']);
+                        } ?>
+
                         <a href="<?= URL_ADMIN ?>usager/ajouter.php" class="btn btn-success mb-3">Ajouter un usager</a>
                         <table class="table">
                             <thead>

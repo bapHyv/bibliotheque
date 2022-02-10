@@ -1,5 +1,6 @@
 <?php
-  include '../config/config.php'
+  include '../config/config.php';
+  include '../config/functions.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -12,6 +13,16 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un editeur</h1>
+
+    <?php if (
+        isset($_SESSION['error_editeur']) &&
+        $_SESSION['error_editeur'] == true
+    ) {
+        alert($_SESSION['message_error'], 'danger');
+        unset($_SESSION['error_editeur']);
+        unset($_SESSION['message_error']);
+    }?>
+
     <form action="<?= URL_ADMIN ?>editeur/action.php" method="POST">
 
         <label for="denomination" class="form-label">Dénomination : </label>

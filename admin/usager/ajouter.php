@@ -1,5 +1,6 @@
 <?php
-  include '../config/config.php'
+  include '../config/config.php';
+  include '../config/functions.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -12,6 +13,16 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un usager</h1>
+
+    <?php if (
+        isset($_SESSION['error_usager']) &&
+        $_SESSION['error_usager'] == true
+    ) {
+        alert($_SESSION['message_error'], 'danger');
+        unset($_SESSION['error_usager']);
+        unset($_SESSION['message_error']);
+    }?>
+
     <form action="<?= URL_ADMIN ?>usager/action.php" method="POST">
         <label for="nom" class="form-label">Nom : </label>
         <input type="text" class="form-control" name="nom" id="nom">

@@ -34,7 +34,7 @@
     <?php
     
     if (isset($_SESSION['error_livre']) && $_SESSION['error_livre'] == true) {
-      alert($_SESSION['message_error'], 'error');
+      alert($_SESSION['message_error'], 'danger');
       unset($_SESSION['error_livre']);
       unset($_SESSION['message_error']);
   }?>

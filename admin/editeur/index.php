@@ -1,7 +1,8 @@
 <?php 
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
 
     $sql = "SELECT * FROM editeur";
 
@@ -9,6 +10,7 @@
 
     $editeurs = $requete->fetchAll(PDO::FETCH_ASSOC);
 
+    var_dump($_SESSION);
 ?>
 
 
@@ -55,6 +57,18 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des editeurs</h1>
+
+                        <?php if (isset($_SESSION['error_editeur']) && $_SESSION['error_editeur'] == false) {
+                            alert($_SESSION['message_error'], "success");
+                            unset($_SESSION['error_editeur']);
+                            unset($_SESSION['message_error']);
+                        } 
+                        if (isset($_SESSION['error_editeur']) && $_SESSION['error_editeur'] == true) {
+                            alert($_SESSION['message_error'], "danger");
+                            unset($_SESSION['error_editeur']);
+                            unset($_SESSION['message_error']);
+                        } ?>
+
                         <a href="<?= URL_ADMIN ?>editeur/ajouter.php" class="btn btn-success mb-3">Ajouter un editeur</a>
                         <table class="table">
                             <thead>

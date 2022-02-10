@@ -32,7 +32,7 @@
       <?php
 
         if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == true) {
-          alert($_SESSION['message_error'], 'error');
+          alert($_SESSION['message_error'], 'danger');
           unset($_SESSION['error_auteur']);
           unset($_SESSION['message_error']);
       }?>

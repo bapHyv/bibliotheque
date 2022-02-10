@@ -1,6 +1,6 @@
 <?php
 
-    include './bdd.php';
+    include '../config/bdd.php';
     include '../config/config.php';
 
     if (isset($_POST['ajouter_editeur'])) {
@@ -27,10 +27,13 @@
         );
 
         if ($requete->execute($data)) {
+            $_SESSION['error_editeur'] = false;
+            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'éditeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/index.php');
             die;
         } else {
-            echo '<p>PROBLEME AVEC LA BDD</p>';
+            $_SESSION['error_editeur'] = true;
+            $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'editeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/ajouter.php');
             die;
         }
@@ -64,9 +67,13 @@
         );
 
         if ($requete->execute($data)) {
+            $_SESSION['error_editeur'] = false;
+            $_SESSION['message_error'] = 'Vous avez bien modifier l\'éditeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/index.php');
             die;
         } else {
+            $_SESSION['error_editeur'] = true;
+            $_SESSION['message_error'] = 'Erreur lors de la modification de l\'editeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/modifier.php?id=' . $id);
             die;
         }
@@ -75,15 +82,24 @@
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
         if ($id > 0) {
+            // RECUPÈRE LA DÉNOMINATION DE L'ÉDITEUR POUR LES MESSAGES D'ERREURS ET DE SUCCES
+            $sqlEditeur = 'SELECT denomination FROM editeur WHERE id = :id LIMIT 1';
+            $requeteEditeur = $bdd->prepare($sqlEditeur);
+            $requeteEditeur->execute([':id' => $id]);
+            $editeurDenomination = $requeteEditeur->fetch(PDO::FETCH_ASSOC);
+
             $sql = 'DELETE FROM editeur WHERE id = :id LIMIT 1';
             $requete = $bdd->prepare($sql);
             $data = array(':id' => $id);
 
             if($requete->execute($data)) {
+                $_SESSION['error_editeur'] = false;
+                $_SESSION['message_error'] = 'L\'éditeur "<b>' . $editeurDenomination['denomination'] . '"</b> a bien été supprimé';
                 header('location:' . URL_ADMIN . 'editeur/index.php');
                 die;
             } else {
-                echo "<p>Erreur base de données</p>";
+                $_SESSION['error_editeur'] = true;
+                $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'éditeur: "<b>' . $editeurDenomination['denomination'] . '<b>"';
                 header('location:' . URL_ADMIN . 'editeur/index.php');
                 die;
             }

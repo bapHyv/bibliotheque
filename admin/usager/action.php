@@ -1,7 +1,7 @@
 <?php
 
-    include './bdd.php';
     include '../config/config.php';
+    include '../config/bdd.php';
 
     if (isset($_POST['ajouter_usager'])) {
         $nom = htmlentities($_POST['nom']);
@@ -25,10 +25,13 @@
         );
 
         if ($requete->execute($data)) {
+            $_SESSION['error_usager'] = false;
+            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . '/usager/index.php');
             die;
         } else {
-            echo '<p>PROBLEME AVEC LA BDD</p>';
+            $_SESSION['error_usager'] = true;
+            $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . '/usager/ajouter.php');
             die;
         }
@@ -58,9 +61,13 @@
         );
 
         if ($requete->execute($data)) {
+            $_SESSION['error_usager'] = false;
+            $_SESSION['message_error'] = 'Vous avez bien modifié l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . 'usager/index.php');
             die;
         } else {
+            $_SESSION['error_usager'] = true;
+            $_SESSION['message_error'] = 'Erreur lors de la modification de l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . 'usager/modifier.php?id=' . $id);
             die;
         }
@@ -69,15 +76,24 @@
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
         if ($id > 0) {
+            // RECUPÈRE LE NOM ET LE PRENOM DE L'USAGER POUR LE MESSAGE D'ERREUR OU DE SUCCES
+            $sqlUsager = 'SELECT nom, prenom FROM usager WHERE id = :id LIMIT 1';
+            $requeteUsager = $bdd->prepare($sqlUsager);
+            $requeteUsager->execute([':id' => $id]);
+            $dataUsager = $requeteUsager->fetchAll(PDO::FETCH_ASSOC);
+
             $sql = 'DELETE FROM usager WHERE id = :id LIMIT 1';
             $requete = $bdd->prepare($sql);
             $data = array(':id' => $id);
 
             if($requete->execute($data)) {
+                $_SESSION['error_usager'] = false;
+                $_SESSION['message_error'] = 'Vous avez bien supprimé l\'Usager: "<b>' . $dataUsager[0]['prenom'] . ' ' . $dataUsager[0]['nom'] . '</b>"';
                 header('location:' . URL_ADMIN . 'usager/index.php');
                 die;
             } else {
-                echo "<p>Erreur base de données</p>";
+                $_SESSION['error_usager'] = true;
+                $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'Usager: "<b>' . $dataUsager[0]['prenom'] . ' ' . $dataUsager[0]['nom'] . '</b>"';
                 header('location:' . URL_ADMIN . 'usager/index.php');
                 die;
             }

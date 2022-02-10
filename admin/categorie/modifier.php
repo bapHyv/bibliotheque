@@ -34,7 +34,7 @@
     <?php
     
     if (isset($_SESSION['error_categorie']) && $_SESSION['error_categorie'] == true) {
-      alert($_SESSION['message_error'], 'error');
+      alert($_SESSION['message_error'], 'danger');
       unset($_SESSION['error_categorie']);
       unset($_SESSION['message_error']);
   }?>

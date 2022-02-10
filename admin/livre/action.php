@@ -32,7 +32,7 @@ if (isset($_POST['ajouter_livre'])) {
 
     if ($requete->execute($data)) {
        $_SESSION['error_livre'] = false;
-       $_SESSION['message_error'] = 'Vous avez bien ajouter: "<b>' . $titre . '</b>"';
+       $_SESSION['message_error'] = 'Vous avez bien ajouté: "<b>' . $titre . '</b>"';
        header('location:' . URL_ADMIN . 'livre/index.php');
        die();
     } else {
