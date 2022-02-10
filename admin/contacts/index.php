@@ -1,7 +1,7 @@
 <?php
     // 1- IMPORTER LE FICHIER QUI CONTIENT L'INSTANCE DU PDO
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
 
     // 2- CRÉER LA REQUÊTE SQL POUR LE READ ET LA CONSERVER DANS UNE VARIABLE
     $sql = 'SELECT * FROM contact';
@@ -13,7 +13,10 @@
     $contacts = $requete->fetchAll(PDO::FETCH_ASSOC); //reçois les données formatées selon le mode passé en argument de fetchALL()
 ?>
 
-        <?php include URL_INCLUDE . 'includes/sidebar.php'; ?>
+        <?php
+            $title = 'Liste des contacts'; 
+            include URL_INCLUDE . 'includes/sidebar.php'; 
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -32,7 +35,6 @@
                     </div>
                     <div class="container">
         <h1 class="text-center">Liste des contacts</h1>
-        <a href="<?= URL_ADMIN?>contacts/add.php" class="btn btn-success mb-3">Ajouter un contact</a>
         <table class="table">
             <thead>
                 <tr>
@@ -54,10 +56,10 @@
                         <td><?= $contact['nom'] ?></td>
                         <td><?= $contact['mail'] ?></td>
                         <td><?= $contact['objet'] ?></td>
-                        <td><?= $contact['message'] ?></td>
-                        <td><a href="<?= URL_ADMIN?>contacts/update.php?id=<?= $contact[
+                        <td><?= substr($contact['message'], 0, 100) ?><?php if (strlen($contact['message']) > 100) {echo "...";} ?></td>
+                        <td><a href="<?= URL_ADMIN?>contacts/repondre.php?id=<?= $contact[
                             'id'
-                        ] ?>" class="btn btn-warning">Modifier</a></td>
+                        ] ?>" class="btn btn-success">Répondre</a></td>
                         <td><a href="<?= URL_ADMIN?>contacts/action.php?id=<?= $contact[
                             'id'
                         ] ?>" class="btn btn-danger">Supprimer</a></td>

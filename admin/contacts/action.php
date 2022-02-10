@@ -1,41 +1,11 @@
 <?php
+    include '../config/config.php';
+    include '../config/bdd.php';
 
-    include './bdd.php';
-
-    if (isset($_POST['btn_add_contact'])) {
-        $nom = htmlentities($_POST['nom']);
-        $mail = htmlentities($_POST['mail']);
-        $objet = htmlentities($_POST['objet']);
-        $message = htmlentities($_POST['message']);
-
-        $sql = 'INSERT INTO contact VALUES (NULL, :nom, :mail, :objet, :message, NOW())';
-
-        $requete = $bdd->prepare($sql);
-
-        $data = array(
-            ':nom' => $nom,
-            ':mail' => $mail,
-            ':objet' => $objet,
-            ':message' => $message
-        );
-
-        if (!$requete->execute($data)) {
-            //Afficher un message d'erreur
-            header('location:add.php');
-            die;
-        } else {
-            header('location:index.php');
-            die;
-        }
-    }
-
-    if (isset($_POST['btn_update_contact'])){
+    if (isset($_POST['btn_repondre_contact'])){
         // *** PROTECTION DES DONNEES ENVOYEES PAR L'UTILISATEUR ***
         $id = intval($_POST['id']);
-        $nom = htmlentities($_POST['nom']);
-        $mail = htmlentities($_POST['mail']);
-        $objet = htmlentities($_POST['objet']);
-        $message = htmlentities($_POST['message']);
+        $message_reponse = htmlentities($_POST['message_reponse']);
 
         // *** TRAITEMENT DE DONNEES ***
             // ....
@@ -43,18 +13,12 @@
         // UPDATE EN BDD
 
         // 1) REQUETE SQL POUR LA MODIF
-        $sql = 'UPDATE contact SET nom = :nom, mail = :mail, objet = :objet, message = :mess WHERE id = :id LIMIT 1';
+        $sql = '';
         // 2) EXECUTE LA REQUETE
         
         $requete = $bdd->prepare($sql);
 
-        $data = array (
-            ':nom' => $nom,
-            ':mail' => $mail,
-            ':objet' => $objet,
-            ':mess' => $message,
-            ':id' => $id
-        );
+        $data = array ();
         
         // 3) VERIF SI UPDATE OK
         if (!$requete->execute($data)){
