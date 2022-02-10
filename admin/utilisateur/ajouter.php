@@ -1,5 +1,6 @@
 <?php
-  include '../config/config.php'
+  include '../config/config.php';
+  include '../config/functions.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -12,7 +13,17 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un utilisateur</h1>
-    <form action="<?= URL_ADMIN ?>utilisateur/action.php" method="POST">
+
+    <?php if (
+        isset($_SESSION['error_utilisateur']) &&
+        $_SESSION['error_utilisateur'] == true
+    ) {
+        alert($_SESSION['message_error'], 'error');
+        unset($_SESSION['error_utilisateur']);
+        unset($_SESSION['message_error']);
+    }?>
+
+    <form action="<?= URL_ADMIN ?>utilisateur/action.php" method="POST" enctype="multipart/form-data">
         <label for="nom" class="form-label">Nom : </label>
         <input type="text" class="form-control" name="nom" id="nom">
 
@@ -32,7 +43,7 @@
         <input type="text" class="form-control" name="numero" id="numero">
 
         <label for="avatar" class="form-label">Avatar : </label>
-        <input type="text" class="form-control" name="avatar" id="avatar">
+        <input type="file" class="form-control" name="avatar" id="avatar">
                 
         <label for="adresse" class="form-label">Adresse : </label>
         <input type="text" class="form-control" name="adresse" id="adresse">

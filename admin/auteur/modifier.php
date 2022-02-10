@@ -28,18 +28,15 @@
   </head>
   <body>
     <div class="container">
+    <h1 class="text-center mt-5">Modifier <?= $auteur['prenom'] . ' ' . $auteur['nom'] ?></h1>
       <?php
-        echo '<h1 class="text-center mt-5">Modifier ' . $auteur['prenom'] . ' ' . $auteur['nom'] .'</h1>';
 
-        if (
-          isset($_SESSION['error_auteur']) &&
-          $_SESSION['error_auteur'] == true
-      ) {
+        if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == true) {
           alert($_SESSION['message_error'], 'error');
           unset($_SESSION['error_auteur']);
           unset($_SESSION['message_error']);
-      }
-      ?>
+      }?>
+      
     <form action="<?= URL_ADMIN?>auteur/action.php" method="POST" enctype='multipart/form-data'>
         <input type="hidden" name="id" value="<?= $auteur['id']?>">
 

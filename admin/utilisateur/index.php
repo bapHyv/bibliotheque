@@ -1,7 +1,8 @@
 <?php 
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
 
     $sql = "SELECT * FROM utilisateur";
 
@@ -55,6 +56,17 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des utilisateurs</h1>
+
+                        <?php if (isset($_SESSION['error_utilisateur']) && $_SESSION['error_utilisateur'] == false) {
+                            alert($_SESSION['message_error'], "success");
+                            unset($_SESSION['error_utilisateur']);
+                            unset($_SESSION['message_error']);
+                        } else {
+                            alert($_SESSION['message_error'], "error");
+                            unset($_SESSION['error_utilisateur']);
+                            unset($_SESSION['message_error']);
+                        } ?>
+
                         <a href="<?= URL_ADMIN ?>utilisateur/ajouter.php" class="btn btn-success mb-3">Ajouter un utilisateur</a>
                         <table class="table">
                             <thead>
@@ -84,7 +96,7 @@
                                         <th scope="row"><?= $utilisateur['mail'] ?></th>
                                         <th scope="row"><?= $utilisateur['mot_de_passe'] ?></th>
                                         <th scope="row"><?= $utilisateur['num_telephone'] ?></th>
-                                        <th scope="row"><?= $utilisateur['avatar'] ?></th>
+                                        <th scope="row"><img style="width: 50%;" src="<?= URL_ADMIN . 'img/utilisateur/' . $utilisateur['avatar'] ?>" alt="<?= $utilisateur['prenom'] . ' ' . $utilisateur['nom'] ?>"></th>
                                         <th scope="row"><?= $utilisateur['adresse'] ?></th>
                                         <th scope="row"><?= $utilisateur['ville'] ?></th>
                                         <th scope="row"><?= $utilisateur['code_postal'] ?></th>

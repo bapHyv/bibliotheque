@@ -49,7 +49,6 @@
     }
 
     if (isset($_POST['modifier_auteur'])) {
-        echo '<p>dans modifier auteur</p>';
         $id = intval($_POST['id']);
         $nom = htmlentities($_POST['nom']);
         $prenom = htmlentities($_POST['prenom']);
@@ -98,7 +97,7 @@
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
         if ($id > 0) {
-            // RECUPÈRE LE TITRE DU LIVRE POUR LE MESSAGE
+            // RECUPÈRE LE NOM ET LE PRENOM DE L'AUTEUR POUR LE MESSAGE D'ERREUR OU DE SUCCES
             $sqlAuteur = 'SELECT nom, prenom FROM auteur WHERE id = :id LIMIT 1';
             $requeteAuteur = $bdd->prepare($sqlAuteur);
             $requeteAuteur->execute([':id' => $id]);
@@ -120,6 +119,4 @@
             }
         }
     }
-
-    echo '<p>Fin action</p>'
 ?>

@@ -1,7 +1,8 @@
 <?php
 
   include '../config/config.php';
-  include './bdd.php';
+  include '../config/bdd.php';
+  include '../config/functions.php';
 
   if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
@@ -24,12 +25,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Ajouter un utilisateur</title>
+    <title>Modifier <?= $utilisateur['prenom'] . ' ' . $utilisateur['nom'] ?></title>
   </head>
   <body>
     <div class="container">
-    <h1 class="text-center mt-5">Ajouter un utilisateur</h1>
-    <form action="<?= URL_ADMIN ?>utilisateur/action.php" method="POST">
+    <h1 class="text-center mt-5">Modifier <?= $utilisateur['prenom'] . ' ' . $utilisateur['nom'] ?></h1>
+
+    <?php
+    
+      if (isset($_SESSION['error_utilisateur']) && $_SESSION['error_utilisateur'] == true) {
+        alert($_SESSION['message_error'], 'error');
+        unset($_SESSION['error_utilisateur']);
+        unset($_SESSION['message_error']);
+    }?>
+
+    <form action="<?= URL_ADMIN ?>utilisateur/action.php" method="POST" enctype="multipart/form-data">
     
         <input type="hidden" value="<?= $utilisateur['id'] ?>" name="id" id="id-utilsateur">
     
@@ -52,7 +62,7 @@
         <input type="text" class="form-control" name="numero" id="numero" value="<?= $utilisateur['num_telephone'] ?>">
 
         <label for="avatar" class="form-label">Avatar : </label>
-        <input type="text" class="form-control" name="avatar" id="avatar" value="<?= $utilisateur['avatar'] ?>">
+        <input type="file" class="form-control" name="avatar" id="avatar">
                 
         <label for="adresse" class="form-label">Adresse : </label>
         <input type="text" class="form-control" name="adresse" id="adresse" value="<?= $utilisateur['adresse'] ?>">
