@@ -12,7 +12,7 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un livre</h1>
-    <form action="<?= URL_ADMIN ?>livre/action.php" method="POST">
+    <form action="<?= URL_ADMIN ?>livre/action.php" method="POST" enctype='multipart/form-data'>
 
         <label for="num_ISBN" class="form-label">Numéro ISBN : </label>
         <input type="text" class="form-control" name="num_ISBN" id="num_ISBN">
@@ -21,10 +21,10 @@
         <input type="text" class="form-control" name="titre" id="titre">
 
         <label for="illustration" class="form-label">Illustration : </label>
-        <input type="text" class="form-control" name="illustration" id="illustration">
+        <input type="file" class="form-control" name="illustration" id="illustration">
 
-        <label for="resumee" class="form-label">Résumé : </label>
-        <input type="text" class="form-control" name="resumee" id="resumee">
+        <label for="resume" class="form-label">Résumé : </label>
+        <input type="text" class="form-control" name="resume" id="resume">
 
         <label for="prix" class="form-label">Prix : </label>
         <input type="text" class="form-control" name="prix" id="prix">

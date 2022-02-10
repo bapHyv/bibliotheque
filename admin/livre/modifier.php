@@ -1,7 +1,7 @@
 <?php
 
   include '../config/config.php';
-  include './bdd.php';
+  include '../config/bdd.php';
 
   if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
@@ -29,7 +29,7 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Modifier un livre</h1>
-    <form action="<?= URL_ADMIN ?>livre/action.php" method="POST">
+    <form action="<?= URL_ADMIN ?>livre/action.php" method="POST" enctype='multipart/form-data'>
     
         <input type="hidden" value="<?= $livre['id'] ?>" name="id" id="id-utilsateur">
     
@@ -40,7 +40,7 @@
         <input type="text" class="form-control" name="titre" id="titre" value="<?= $livre['titre'] ?>">
 
         <label for="illustration" class="form-label">Illustration : </label>
-        <input type="text" class="form-control" name="illustration" id="illustration" value="<?= $livre['illustration'] ?>">
+        <input type="file" class="form-control" name="illustration" id="illustration" value="<?= $livre['illustration'] ?>">
 
         <label for="resume" class="form-label">Résumé : </label>
         <input type="text" class="form-control" name="resume" id="resume" value="<?= $livre['resume'] ?>">

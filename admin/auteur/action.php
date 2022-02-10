@@ -42,6 +42,7 @@
     }
 
     if (isset($_POST['modifier_auteur'])) {
+        echo '<p>dans modifier auteur</p>';
         $id = intval($_POST['id']);
         $nom = htmlentities($_POST['nom']);
         $prenom = htmlentities($_POST['prenom']);
@@ -71,10 +72,11 @@
         );
 
         if ($requete->execute($data)) {
-            header('location:' . URL_ADMIN . '/auteur/index.php');
+            header('location:' . URL_ADMIN . 'auteur/index.php');
             die;
         } else {
-            header('location:' . URL_ADMIN . '/auteur/modifier.php?id=' . $id);
+            echo '<p>PB BDD</p>';
+            header('location:' . URL_ADMIN . 'auteur/modifier.php?id=' . $id);
             die;
         }
     }
@@ -94,4 +96,6 @@
             }
         }
     }
+
+    echo '<p>Fin action</p>'
 ?>

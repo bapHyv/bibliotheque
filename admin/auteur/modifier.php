@@ -16,8 +16,6 @@
           die;
         }
     }
-
-    var_dump($_POST);
 ?>
 <!doctype html>
 <html lang="fr">
@@ -25,22 +23,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Ajouter une prise de contact</title>
+    <title>Modifier un auteur</title>
   </head>
   <body>
     <div class="container">
-    <h1 class="text-center">Ajouter un auteur</h1>
-    <form action="action.php" method="POST">
+      <?php
+        echo '<h1 class="text-center mt-5">Modifier ' . $auteur['prenom'] . ' ' . $auteur['nom'] .'</h1>'
+      ?>
+    <form action="<?= URL_ADMIN?>auteur/action.php" method="POST">
         <input type="hidden" name="id" value=<?= $auteur['id']?>>
 
         <label for="nom" class="form-label">Nom : </label>
         <input type="text" class="form-control" name="nom" id="nom" value=<?= $auteur['nom']?>>
 
         <label for="prenom" class="form-label">Prénom : </label>
-        <input type="text" class="form-control" name="prenom" id="prenom" value=<?= $auteur['prenom']?>>
+        <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $auteur['prenom']?>">
 
         <label for="nom_de_plume" class="form-label">Nom de plume : </label>
-        <input type="text" class="form-control" name="nom_de_plume" id="nom_de_plume" value=<?= $auteur['nom_de_plume']?>>
+        <input type="text" class="form-control" name="nom_de_plume" id="nom_de_plume" value="<?= $auteur['nom_de_plume']?>">
 
         <label for="adresse" class="form-label">Adresse : </label>
         <input type="text" class="form-control" name="adresse" id="adresse" value=<?= $auteur['adresse']?>>

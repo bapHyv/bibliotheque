@@ -5,3 +5,11 @@
 .red {
     color: red;
 }
+
+img {
+    width: 50px !important;
+}
+
+.illustration {
+    width: 50px !important;
+}

@@ -1,7 +1,7 @@
 <?php 
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
 
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);

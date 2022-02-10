@@ -59,7 +59,7 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des auteurs</h1>
-                        <a href="<?= URL_ADMIN ?>auteur/ajouter.php" class="btn btn-success">Ajouter un auteur</a>
+                        <a href="<?= URL_ADMIN ?>auteur/ajouter.php" class="btn btn-success mb-3">Ajouter un auteur</a>
                         <table class="table">
                             <thead>
                                 <tr>

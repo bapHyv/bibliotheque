@@ -1,7 +1,8 @@
 <?php 
 
     include '../config/config.php';
-    include './bdd.php';
+    include '../config/bdd.php';
+    include '../config/functions.php';
 
     $sql = "SELECT * FROM livre";
 
@@ -9,6 +10,7 @@
 
     $livres = $requete->fetchAll(PDO::FETCH_ASSOC);
 
+    var_dump($_SESSION);
 ?>
 
 
@@ -29,6 +31,7 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= URL_ADMIN?>css/liste-livres.css">
 </head>
 
 <body id="page-top">
@@ -55,6 +58,17 @@
                     </div>
                     <div>
                         <h1 class="text-center">Liste des livres</h1>
+
+                        <?php if (isset($_SESSION['error_livre']) && $_SESSION['error_livre'] == false) {
+                            alert($_SESSION['message_error'], "success");
+                            unset($_SESSION['error_livre']);
+                            unset($_SESSION['message_error']);
+                        } else {
+                            alert($_SESSION['message_error'], "error");
+                            unset($_SESSION['error_livre']);
+                            unset($_SESSION['message_error']);
+                        } ?>
+
                         <a href="<?= URL_ADMIN ?>livre/ajouter.php" class="btn btn-success mb-3">Ajouter un livre</a>
                         <table class="table">
                             <thead>
@@ -78,7 +92,7 @@
                                         <th scope="row"><?= $livre['id'] ?></th>
                                         <th scope="row"><?= $livre['num_ISBN'] ?></th>
                                         <th scope="row"><?= $livre['titre'] ?></th>
-                                        <th scope="row"><?= $livre['illustration'] ?></th>
+                                        <th scope="row"><img style="width: 40%;" class="illustration" src="<?= URL_ADMIN ?>img/livre/<?= $livre['illustration'] ?>" alt="<?= $livre['titre'] ?>"></th>
                                         <?php $resume = mb_substr($livre['resume'], 0, 100, 'UTF-8');?>
                                         <th scope="row"><?php echo $resume; ?>...</th>
                                         <th scope="row"><?= $livre['prix'] ?></th>
