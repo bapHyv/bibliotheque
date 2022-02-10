@@ -1,7 +1,8 @@
 <?php
 
   include '../config/config.php';
-  include './bdd.php';
+  include '../config/bdd.php';
+  include '../config/function.php';
 
   if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
@@ -24,11 +25,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Ajouter une categorie</title>
+    <title>Modifier la catégorie: <?= $categorie['libelle'] ?></title>
   </head>
   <body>
     <div class="container">
-    <h1 class="text-center mt-5">Ajouter une categorie</h1>
+    <h1 class="text-center mt-5">Modifier la catégorie: <?= $categorie['libelle'] ?></h1>
+
+    <?php
+    
+    if (isset($_SESSION['error_categorie']) && $_SESSION['error_categorie'] == true) {
+      alert($_SESSION['message_error'], 'error');
+      unset($_SESSION['error_categorie']);
+      unset($_SESSION['message_error']);
+  }?>
+
     <form action="<?= URL_ADMIN ?>categorie/action.php" method="POST">
     
         <input type="hidden" value="<?= $categorie['id'] ?>" name="id" id="id-utilsateur">

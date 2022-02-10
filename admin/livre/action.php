@@ -37,8 +37,7 @@ if (isset($_POST['ajouter_livre'])) {
        die();
     } else {
        $_SESSION['error_livre'] = true;
-       $_SESSION['message_error'] =
-           'Erreur lors de l\'ajout du livre: "<b>' . $titre . '</b>"';
+       $_SESSION['message_error'] = 'Erreur lors de l\'ajout du livre: "<b>' . $titre . '</b>"';
        header('location:' . URL_ADMIN . 'livre/ajouter.php');
        die();
     }
@@ -84,8 +83,7 @@ if (isset($_POST['modifier_livre'])) {
         die();
     } else {
         $_SESSION['error_livre'] = true;
-        $_SESSION['message_error'] =
-            'Erreur lors de la modification du livre: "<b>' . $titre . '</b>"';
+        $_SESSION['message_error'] = 'Erreur lors de la modification du livre: "<b>' . $titre . '</b>"';
         header('location:' . URL_ADMIN . 'livre/modifier.php?id=' . $id);
         die();
     }
@@ -94,7 +92,7 @@ if (isset($_POST['modifier_livre'])) {
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
     if ($id > 0) {
-        // RECUPÈRE LE TITRE DU LIVRE POUR LE MESSAGE
+        // RECUPÈRE LE TITRE DU LIVRE POUR LES MESSAGES D'ERREURS ET DE SUCCES
         $sqlNomLivre = 'SELECT titre FROM livre WHERE id = :id LIMIT 1';
         $requeteNomLivre = $bdd->prepare($sqlNomLivre);
         $requeteNomLivre->execute([':id' => $id]);
@@ -106,14 +104,12 @@ if (isset($_GET['id'])) {
 
         if ($requete->execute($data)) {
             $_SESSION['error_livre'] = false;
-            $_SESSION['message_error'] =
-                'Le livre "<b>' . $titreLivre['titre'] . '"</b> a bien été supprimé';
+            $_SESSION['message_error'] = 'Le livre "<b>' . $titreLivre['titre'] . '"</b> a bien été supprimé';
             header('location:' . URL_ADMIN . 'livre/index.php');
             die();
         } else {
             $_SESSION['error_livre'] = true;
-            $_SESSION['message_error'] =
-                'Erreur lors de la suppression du livre: "<b>' . $titreLivre['titre'] . '<b>"';
+            $_SESSION['message_error'] = 'Erreur lors de la suppression du livre: "<b>' . $titreLivre['titre'] . '<b>"';
             header('location:' . URL_ADMIN . 'livre/index.php');
             die();
         }

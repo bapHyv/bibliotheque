@@ -1,5 +1,6 @@
 <?php
-  include '../config/config.php'
+  include '../config/config.php';
+  include '../config/function.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -12,6 +13,16 @@
   <body>
     <div class="container">
     <h1 class="text-center mt-5">Ajouter un categorie</h1>
+
+    <?php if (
+        isset($_SESSION['error_categorie']) &&
+        $_SESSION['error_categorie'] == true
+    ) {
+        alert($_SESSION['message_error'], 'error');
+        unset($_SESSION['error_categorie']);
+        unset($_SESSION['message_error']);
+    }?>
+
     <form action="<?= URL_ADMIN ?>categorie/action.php" method="POST">
 
         <label for="libelle" class="form-label">Libellé : </label>
