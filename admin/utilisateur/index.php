@@ -11,7 +11,10 @@
     $utilisateurs = $requete->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-        <?php include URL_INCLUDE . 'includes/sidebar.php'; ?>
+        <?php 
+            $title = 'Liste des utilisateurs';
+            include URL_INCLUDE . 'includes/sidebar.php'; 
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

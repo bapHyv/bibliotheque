@@ -13,7 +13,10 @@
     var_dump($_SESSION);
 ?>
 
-        <?php include URL_INCLUDE . 'includes/sidebar.php'; ?>
+        <?php 
+            $title = 'Liste des éditeurs';
+            include URL_INCLUDE . 'includes/sidebar.php'; 
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -31,7 +34,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard clone</h1>
                     </div>
                     <div>
-                        <h1 class="text-center">Liste des editeurs</h1>
+                        <h1 class="text-center">Liste des éditeurs</h1>
 
                         <?php if (isset($_SESSION['error_editeur']) && $_SESSION['error_editeur'] == false) {
                             alert($_SESSION['message_error'], "success");

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bibliotheque admin</title>
+    <title><?php echo $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= URL_ADMIN?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,8 +22,6 @@
     <?php
         echo $styleSheet;
     ?>
-
-    <?= var_dump($styleSheets)?>
 
 </head>
 

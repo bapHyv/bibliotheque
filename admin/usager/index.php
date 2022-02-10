@@ -13,7 +13,10 @@
 
 ?>
 
-        <?php include URL_INCLUDE . 'includes/sidebar.php'; ?>
+        <?php 
+            $title = 'Liste des usagers';
+            include URL_INCLUDE . 'includes/sidebar.php'; 
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
