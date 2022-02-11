@@ -98,6 +98,28 @@ if (isset($_GET['id'])) {
         $requeteNomLivre->execute([':id' => $id]);
         $titreLivre = $requeteNomLivre->fetch(PDO::FETCH_ASSOC);
 
+        $sqlDeleteImg = 'SELECT illustration FROM livre WHERE id = :id LIMIT 1';
+        $requeteDeleteImg = $bdd->prepare($sqlDeleteImg);
+        $requeteDeleteImg->execute([':id' => $id]);
+        $illustrationName = $requeteDeleteImg->fetch(PDO::FETCH_ASSOC);
+        $illustrationName = $illustrationName['illustration'];
+        $pathFile = URL_INCLUDE . 'img/livre/' . $illustrationName;
+
+        if (!is_file($pathFile)) {
+            $_SESSION['error_livre'] = true;
+            $_SESSION['message_error'] = 'Erreur, le fichier <b>' . $illustrationName . '</b> n\'existe pas';
+            header('location:' . URL_ADMIN . '/livre/index.php');
+            die;
+        }
+
+        if (!unlink($pathFile)) {
+            $_SESSION['error_livre'] = true;
+            $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'image: ' . $illustrationName;
+            header('location:' . URL_ADMIN . '/livre/index.php');
+            die;
+        }
+
+
         $sql = 'DELETE FROM livre WHERE id = :id LIMIT 1';
         $requete = $bdd->prepare($sql);
         $data = [':id' => $id];

@@ -9,8 +9,6 @@
     $requete = $bdd->query($sql);
 
     $editeurs = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-    var_dump($_SESSION);
 ?>
 
         <?php 

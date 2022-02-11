@@ -106,6 +106,27 @@
             $requeteAuteur->execute([':id' => $id]);
             $dataAuteur = $requeteAuteur->fetchAll(PDO::FETCH_ASSOC);
 
+            $sqlDeleteImg = 'SELECT photo FROM auteur WHERE id = :id LIMIT 1';
+            $requeteDeleteImg = $bdd->prepare($sqlDeleteImg);
+            $requeteDeleteImg->execute([':id' => $id]);
+            $photoName = $requeteDeleteImg->fetch(PDO::FETCH_ASSOC);
+            $photoName = $photoName['photo'];
+            $pathFile = URL_INCLUDE . 'img/auteur/' . $photoName;
+
+            if (!is_file($pathFile)) {
+                $_SESSION['error_auteur'] = true;
+                $_SESSION['message_error'] = 'Erreur, le fichier <b>' . $photoName . '</b> n\'existe pas';
+                header('location:' . URL_ADMIN . '/auteur/index.php');
+                die;
+            }
+            
+            if (!unlink($pathFile)) {
+                $_SESSION['error_auteur'] = true;
+                $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'image: ' . $photoName;
+                header('location:' . URL_ADMIN . '/auteur/index.php');
+                die;
+            }
+
             $sql = 'DELETE FROM auteur WHERE id = :id LIMIT 1';
             $requete = $bdd->prepare($sql);
             $data = array(':id' => $id);
