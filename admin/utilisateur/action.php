@@ -62,6 +62,8 @@
         $code_postal = htmlentities($_POST['code_postal']);
 
         if ($avatar == '') {
+            var_dump($_POST);
+            die;
             $avatar = htmlentities($_POST['avatar_hidden']);
         } else {
             $target = URL_INCLUDE . 'img/utilisateur/' . $_FILES['avatar']['name'];
@@ -107,6 +109,27 @@
             $requeteUtilisateur = $bdd->prepare($sqlUtilisateur);
             $requeteUtilisateur->execute([':id' => $id]);
             $dataUtilisateur = $requeteUtilisateur->fetchAll(PDO::FETCH_ASSOC);
+
+            $sqlDeleteImg = 'SELECT avatar FROM utilisateur WHERE id = :id LIMIT 1';
+            $requeteDeleteImg = $bdd->prepare($sqlDeleteImg);
+            $requeteDeleteImg->execute([':id' => $id]);
+            $avatarName = $requeteDeleteImg->fetch(PDO::FETCH_ASSOC);
+            $avatarName = $avatarName['avatar'];
+            $pathFile = URL_INCLUDE . 'img/utilisateur/' . $avatarName;
+
+            if (!is_file($pathFile)) {
+                $_SESSION['error_utilisateur'] = true;
+                $_SESSION['message_error'] = 'Erreur, le fichier <b>' . $avatar . '</b> n\'existe pas';
+                header('location:' . URL_ADMIN . 'utilisateur/index.php');
+                die;
+            }
+
+            if (!unlink($pathFile)) {
+                $_SESSION['error_utilisateur'] = true;
+                $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'image: ' . $avatar;
+                header('location:' . URL_ADMIN . 'utilisateur/index.php');
+                die;
+            }
 
             $sql = 'DELETE FROM utilisateur WHERE id = :id LIMIT 1';
             $requete = $bdd->prepare($sql);
