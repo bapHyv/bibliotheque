@@ -8,7 +8,7 @@
         $prenom = htmlentities($_POST['prenom']);
         $pseudo = htmlentities($_POST['pseudo']);
         $mail = htmlentities($_POST['mail']);
-        $mdp = htmlentities($_POST['mdp']);
+        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
         $numero = htmlentities($_POST['numero']);
         $avatar = htmlentities($_FILES['avatar']['name']);
         $adresse = htmlentities($_POST['adresse']);
@@ -38,12 +38,12 @@
         if ($requete->execute($data)) {
             $_SESSION['error_utilisateur'] = false;
             $_SESSION['message_error'] = 'Vous avez bien ajouté l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . '/utilisateur/index.php');
+            header('location:' . URL_ADMIN . 'utilisateur/index.php');
             die;
         } else {
             $_SESSION['error_utilisateur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . '/utilisateur/ajouter.php');
+            header('location:' . URL_ADMIN . 'utilisateur/ajouter.php');
             die;
         }
     }
@@ -54,7 +54,7 @@
         $prenom = htmlentities($_POST['prenom']);
         $pseudo = htmlentities($_POST['pseudo']);
         $mail = htmlentities($_POST['mail']);
-        $mdp = htmlentities($_POST['mdp']);
+        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
         $numero = htmlentities($_POST['numero']);
         $avatar = htmlentities($_FILES['avatar']['name']);
         $adresse = htmlentities($_POST['adresse']);

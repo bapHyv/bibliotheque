@@ -1,3 +1,9 @@
+<?php
+
+var_dump($_SESSION);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +16,18 @@
 <body>
     <div class="container mt-5 border border-info p-5 shadow-lg rounded-3">
         <h1 class="text-center">Login</h1>
-        <form action="login.php" method="POST"></form>
-        <div>
-            <label for="utilisateur">Utilisateur:</label>
-            <input type="text" name="utilisateur" class="form-control">
-        </div>
-        <div>
-            <label for="mot_de_passe">Mot de passe:</label>
-            <input type="password" name="mot_de_passe" class="form-control">
-        </div>
-        <input type="submit" class="btn btn-success mt-5">
-        <a href="http://localhost:8888/projet_bibliotheque_clone/index.php" class="btn btn-danger mt-5">Annuler</a>
+        <form action="./login_action.php" method="POST">
+            <div>
+                <label for="mail">E-mail:</label>
+                <input type="text" name="mail" class="form-control">
+            </div>
+            <div>
+                <label for="mot_de_passe">Mot de passe:</label>
+                <input type="password" name="mot_de_passe" class="form-control">
+            </div>
+            <input type="submit" value="Se connecter" class="btn btn-success mt-5" name="login">
+            <a href="http://localhost:8888/projet_bibliotheque_clone/index.php" class="btn btn-danger mt-5">Annuler</a>
+        </form>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    

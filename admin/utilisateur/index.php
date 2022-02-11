@@ -5,9 +5,7 @@
     include '../config/functions.php';
 
     $sql = "SELECT * FROM utilisateur";
-
     $requete = $bdd->query($sql);
-
     $utilisateurs = $requete->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -71,7 +69,7 @@
                                         <th scope="row"><?= $utilisateur['prenom'] ?></th>
                                         <th scope="row"><?= $utilisateur['pseudo'] ?></th>
                                         <th scope="row"><?= $utilisateur['mail'] ?></th>
-                                        <th scope="row"><?= $utilisateur['mot_de_passe'] ?></th>
+                                        <th scope="row"><?= substr($utilisateur['mot_de_passe'], 0, 3) ?>...</th>
                                         <th scope="row"><?= $utilisateur['num_telephone'] ?></th>
                                         <th scope="row"><img style="width: 50%;" src="<?= URL_ADMIN . 'img/utilisateur/' . $utilisateur['avatar'] ?>" alt="<?= $utilisateur['prenom'] . ' ' . $utilisateur['nom'] ?>"></th>
                                         <th scope="row"><?= $utilisateur['adresse'] ?></th>

@@ -1,12 +1,12 @@
 <?php
-
-    include './config/config.php';
+include './config/config.php';
+var_dump($_SESSION);
+echo '<br>';
+var_dump($_POST);
 
 ?>
 
-        <?php 
-            include './includes/sidebar.php'
-        ?>
+        <?php include './includes/sidebar.php'; ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -14,9 +14,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                <?php 
-                    include './includes/topbar.php'
-                ?>
+                <?php include './includes/topbar.php'; ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -26,12 +24,13 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard clone</h1>
                     </div>
 
+                    <a href="./logout_action.php" class="btn btn-danger">Se déconnecter</a>
+
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
-           <?php 
-            include './includes/footer.php'
-           ?>
+           <?php include './includes/footer.php';
+?>
