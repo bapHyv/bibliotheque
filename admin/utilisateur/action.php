@@ -62,8 +62,6 @@
         $code_postal = htmlentities($_POST['code_postal']);
 
         if ($avatar == '') {
-            var_dump($_POST);
-            die;
             $avatar = htmlentities($_POST['avatar_hidden']);
         } else {
             $target = URL_INCLUDE . 'img/utilisateur/' . $_FILES['avatar']['name'];

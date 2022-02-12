@@ -1,9 +1,5 @@
 <?php
-include './config/config.php';
-var_dump($_SESSION);
-echo '<br>';
-var_dump($_POST);
-
+    include './config/config.php';
 ?>
 
         <?php include './includes/sidebar.php'; ?>

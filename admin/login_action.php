@@ -1,5 +1,4 @@
 <?php
-
     include './config/bdd.php';
 
     if (isset($_POST['login'])) {
@@ -26,8 +25,4 @@
             die;
         }
     }
-
-
-
-
 ?>
