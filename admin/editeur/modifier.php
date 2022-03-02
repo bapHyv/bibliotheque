@@ -21,6 +21,7 @@
 ?>
 
 <?php
+    $styleSheet = '';
     $title = 'Modifier ' . $editeur['denomination'];
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

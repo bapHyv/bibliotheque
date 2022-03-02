@@ -20,6 +20,7 @@
 ?>
 
 <?php
+    $styleSheet = '';
     $title = 'Modifier ' . $auteur['prenom'] . ' ' . $auteur['nom'];
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

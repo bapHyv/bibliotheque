@@ -21,6 +21,7 @@
 ?>
 
 <?php
+    $styleSheet = '';
     $title = 'Modifier la catégorie: ' . $categorie['libelle'];
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

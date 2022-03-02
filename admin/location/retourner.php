@@ -33,7 +33,7 @@
 ?>
 
 <?php 
-            $styleSheets = '<link rel="stylesheet" href="' . URL_ADMIN . 'css/single-livres.css">';
+            $styleSheets = '<link rel="stylesheet" href="' . URL_ADMIN . 'css/single-livre.css">';
             $title = 'Retour de ' . $livre['titre'];
             include URL_INCLUDE . 'includes/sidebar.php';
         ?>

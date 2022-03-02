@@ -4,6 +4,7 @@
 ?>
   
   <?php
+    $styleSheet = '';
     $title = 'Ajouter un utilisateur';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

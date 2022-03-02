@@ -4,6 +4,7 @@
 ?>
 
 <?php
+    $styleSheet = '';
     $title = 'Ajouter une categorie';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

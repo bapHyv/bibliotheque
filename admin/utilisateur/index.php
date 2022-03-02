@@ -9,7 +9,8 @@
     $utilisateurs = $requete->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-        <?php 
+        <?php
+            $styleSheet = '';
             $title = 'Liste des utilisateurs';
             include URL_INCLUDE . 'includes/sidebar.php'; 
         ?>

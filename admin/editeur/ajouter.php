@@ -3,6 +3,7 @@
   include '../config/functions.php';
 ?>
 <?php
+    $styleSheet = '';
     $title = 'Ajouter un éditeur';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

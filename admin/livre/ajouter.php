@@ -2,6 +2,7 @@
   include '../config/config.php'
 ?>
 <?php
+    $styleSheet = '';
     $title = 'Ajouter un livre';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

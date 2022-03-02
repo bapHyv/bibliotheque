@@ -1,21 +1,20 @@
-<?php 
+<?php
 
-    include '../config/config.php';
-    include '../config/bdd.php';
-    include '../config/functions.php';
+include '../config/config.php';
+include '../config/bdd.php';
+include '../config/functions.php';
 
+$sql = 'SELECT * FROM usager';
 
-    $sql = "SELECT * FROM usager";
+$requete = $bdd->query($sql);
 
-    $requete = $bdd->query($sql);
-
-    $usagers = $requete->fetchAll(PDO::FETCH_ASSOC);
-
+$usagers = $requete->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-        <?php 
-            $title = 'Liste des usagers';
-            include URL_INCLUDE . 'includes/sidebar.php'; 
+        <?php
+        $styleSheet = '';
+        $title = 'Liste des usagers';
+        include URL_INCLUDE . 'includes/sidebar.php';
         ?>
 
         <!-- Content Wrapper -->
@@ -36,16 +35,24 @@
                     <div>
                         <h1 class="text-center">Liste des usagers</h1>
 
-                        <?php if (isset($_SESSION['error_usager']) && $_SESSION['error_usager'] == false) {
-                            alert($_SESSION['message_error'], "success");
+                        <?php
+                        if (
+                            isset($_SESSION['error_usager']) &&
+                            $_SESSION['error_usager'] == false
+                        ) {
+                            alert($_SESSION['message_error'], 'success');
                             unset($_SESSION['error_usager']);
                             unset($_SESSION['message_error']);
                         }
-                        if (isset($_SESSION['error_usager']) && $_SESSION['error_usager'] == true) {
-                            alert($_SESSION['message_error'], "danger");
+                        if (
+                            isset($_SESSION['error_usager']) &&
+                            $_SESSION['error_usager'] == true
+                        ) {
+                            alert($_SESSION['message_error'], 'danger');
                             unset($_SESSION['error_usager']);
                             unset($_SESSION['message_error']);
-                        } ?>
+                        }
+                        ?>
 
                         <a href="<?= URL_ADMIN ?>usager/ajouter.php" class="btn btn-success mb-3">Ajouter un usager</a>
                         <table class="table">
@@ -65,15 +72,33 @@
                                 <?php foreach ($usagers as $usager): ?>
                                     <tr>
                                         <!-- AFFICHAGE DES CHAMPS -->
-                                        <th scope="row"><?= $usager['id'] ?></th>
-                                        <th scope="row"><?= $usager['nom'] ?></th>
-                                        <th scope="row"><?= $usager['prenom'] ?></th>
-                                        <th scope="row"><?= $usager['adresse'] ?></th>
-                                        <th scope="row"><?= $usager['ville'] ?></th>
-                                        <th scope="row"><?= $usager['code_postal'] ?></th>
-                                        <th scope="row"><?= $usager['mail'] ?></th>
-                                        <td><a href="<?= URL_ADMIN ?>/usager/modifier.php?id=<?=$usager['id']?>" class="btn btn-warning">Modifier</a></td>
-                                        <td><a href="<?= URL_ADMIN ?>/usager/action.php?id=<?=$usager['id']?>" class="btn btn-danger">Supprimer</a></td>
+                                        <th scope="row"><?= $usager[
+                                            'id'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'nom'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'prenom'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'adresse'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'ville'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'code_postal'
+                                        ] ?></th>
+                                        <th scope="row"><?= $usager[
+                                            'mail'
+                                        ] ?></th>
+                                        <td><a href="<?= URL_ADMIN ?>/usager/modifier.php?id=<?= $usager[
+    'id'
+] ?>" class="btn btn-warning">Modifier</a></td>
+                                        <td><a href="<?= URL_ADMIN ?>/usager/action.php?id=<?= $usager[
+    'id'
+] ?>" class="btn btn-danger">Supprimer</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -1,20 +1,20 @@
 <?php
 
-    include '../config/config.php';
-    include '../config/bdd.php';
-    include '../config/functions.php';
+include '../config/config.php';
+include '../config/bdd.php';
+include '../config/functions.php';
 
-    $sql = 'SELECT * FROM auteur';
+$sql = 'SELECT * FROM auteur';
 
-    $requete = $bdd->query($sql);
+$requete = $bdd->query($sql);
 
-    $auteurs = $requete->fetchAll(PDO::FETCH_ASSOC);
-
+$auteurs = $requete->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-        <?php 
-            $title = 'Liste des auteurs';
-            include URL_INCLUDE . 'includes/sidebar.php'; 
+        <?php
+        $styleSheet = '';
+        $title = 'Liste des auteurs';
+        include URL_INCLUDE . 'includes/sidebar.php';
         ?>
 
         <!-- Content Wrapper -->
@@ -35,16 +35,24 @@
                     <div>
                         <h1 class="text-center">Liste des auteurs</h1>
 
-                        <?php if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == false) {
-                            alert($_SESSION['message_error'], "success");
+                        <?php
+                        if (
+                            isset($_SESSION['error_auteur']) &&
+                            $_SESSION['error_auteur'] == false
+                        ) {
+                            alert($_SESSION['message_error'], 'success');
                             unset($_SESSION['error_auteur']);
                             unset($_SESSION['message_error']);
                         }
-                        if (isset($_SESSION['error_auteur']) && $_SESSION['error_auteur'] == true) {
-                            alert($_SESSION['message_error'], "danger");
+                        if (
+                            isset($_SESSION['error_auteur']) &&
+                            $_SESSION['error_auteur'] == true
+                        ) {
+                            alert($_SESSION['message_error'], 'danger');
                             unset($_SESSION['error_auteur']);
                             unset($_SESSION['message_error']);
-                        } ?>
+                        }
+                        ?>
 
                         <a href="<?= URL_ADMIN ?>auteur/ajouter.php" class="btn btn-success mb-3">Ajouter un auteur</a>
                         <table class="table">
@@ -78,9 +86,15 @@
                                         <td><?= $auteur['code_postal'] ?></td>
                                         <td><?= $auteur['mail'] ?></td>
                                         <td><?= $auteur['numero'] ?></td>
-                                        <td><img style="width: 40%;" src="<?= URL_ADMIN ?>img/auteur/<?= $auteur['photo'] ?>" alt="<?= $auteur['prenom'] ?> <?= $auteur['nom'] ?>"></td>
-                                        <td><a href="<?= URL_ADMIN ?>auteur/modifier.php?id=<?= $auteur['id'] ?>" class="btn btn-warning">Modifier</a></td>
-                                        <td><a href="<?= URL_ADMIN ?>auteur/action.php?id=<?= $auteur['id'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                        <td><img style="width: 40%;" src="<?= URL_ADMIN ?>img/auteur/<?= $auteur[
+    'photo'
+] ?>" alt="<?= $auteur['prenom'] ?> <?= $auteur['nom'] ?>"></td>
+                                        <td><a href="<?= URL_ADMIN ?>auteur/modifier.php?id=<?= $auteur[
+    'id'
+] ?>" class="btn btn-warning">Modifier</a></td>
+                                        <td><a href="<?= URL_ADMIN ?>auteur/action.php?id=<?= $auteur[
+    'id'
+] ?>" class="btn btn-danger">Supprimer</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

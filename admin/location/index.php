@@ -12,7 +12,7 @@
 ?>
 
         <?php 
-            $styleSheets = '<link rel="stylesheet" href="' . URL_ADMIN . 'css/liste-livres.css">';
+            $styleSheet = '<link rel="stylesheet" href="' . URL_ADMIN . 'css/liste-livres.css">';
             $title = 'Liste des livres';
             include URL_INCLUDE . 'includes/sidebar.php';
         ?>

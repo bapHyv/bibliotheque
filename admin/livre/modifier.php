@@ -22,6 +22,7 @@
 <title>Modifier <?=$livre['titre']?></title>
 
 <?php
+    $styleSheet = '';
     $title = 'Modifier ' . $livre['titre'];
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

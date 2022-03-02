@@ -21,6 +21,7 @@
 ?>
   
 <?php
+    $styleSheet = '';
     $title = 'Modifier ' . $utilisateur['prenom'] . ' ' . $utilisateur['nom'];
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

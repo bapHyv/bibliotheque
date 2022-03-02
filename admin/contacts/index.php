@@ -14,6 +14,7 @@
 ?>
 
         <?php
+            $styleSheet = '';
             $title = 'Liste des contacts'; 
             include URL_INCLUDE . 'includes/sidebar.php'; 
         ?>

@@ -13,6 +13,7 @@
 ?>
 
         <?php 
+            $styleSheet = '';
             $title = 'Liste des catégories';
             include URL_INCLUDE . 'includes/sidebar.php'; 
         ?>

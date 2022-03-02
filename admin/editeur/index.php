@@ -12,6 +12,7 @@
 ?>
 
         <?php 
+            $styleSheet = '';
             $title = 'Liste des éditeurs';
             include URL_INCLUDE . 'includes/sidebar.php'; 
         ?>

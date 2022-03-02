@@ -30,6 +30,7 @@
 ?>
 
 <?php
+    $styleSheet = '';
     $title = 'Répondre à une prise de contact';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>

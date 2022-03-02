@@ -4,6 +4,7 @@
 ?>
   
   <?php
+    $styleSheet = '';
     $title = 'Ajouter un auteur';
     include URL_INCLUDE . 'includes/sidebar.php';
   ?>
