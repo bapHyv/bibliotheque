@@ -51,7 +51,6 @@ if (isset($_POST['modifier_livre'])) {
     $resume = htmlentities($_POST['resume']);
     $prix = htmlentities($_POST['prix']);
     $nb_pages = intval($_POST['nb_pages']);
-    $disponibilite = boolval($_POST['disponibilite']);
 
     if ($illustration == '') {
         $illustration = htmlentities($_POST['illustration_hidden']);
@@ -61,7 +60,7 @@ if (isset($_POST['modifier_livre'])) {
     }
 
     $sql =
-        'UPDATE livre SET num_ISBN = :num_ISBN, titre = :titre, illustration = :illustration, resume = :resume, prix = :prix, nb_pages = :nb_pages, disponibilite = :disponibilite WHERE id = :id LIMIT 1';
+        'UPDATE livre SET num_ISBN = :num_ISBN, titre = :titre, illustration = :illustration, resume = :resume, prix = :prix, nb_pages = :nb_pages WHERE id = :id LIMIT 1';
 
     $requete = $bdd->prepare($sql);
 
@@ -73,7 +72,6 @@ if (isset($_POST['modifier_livre'])) {
         ':resume' => $resume,
         ':prix' => $prix,
         ':nb_pages' => $nb_pages,
-        ':disponibilite' => $disponibilite,
     ];
 
     if ($requete->execute($data)) {

@@ -69,9 +69,6 @@
         <label for="nb_pages" class="form-label">Nombre de pages : </label>
         <input type="text" class="form-control" name="nb_pages" id="nb_pages" value="<?= $livre['nb_pages'] ?>">
 
-        <label for="disponibilite" class="form-label">Disponibilité : </label>
-        <input type="text" class="form-control" name="disponibilite" id="disponibilite" value="<?= $livre['disponibilite'] ?>">
-
         <input type="submit" class="btn btn-success mt-5" name="modifier_livre">
         <a href="<?= URL_ADMIN ?>livre/index.php" class="btn btn-danger mt-5">Annuler</a>
 
