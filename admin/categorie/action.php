@@ -2,6 +2,7 @@
 
     include '../config/config.php';
     include '../config/bdd.php';
+    include '../config/functions.php';
 
     if (isset($_POST['ajouter_categorie'])) {
         $libelle = htmlentities($_POST['libelle']);
@@ -12,17 +13,16 @@
 
         $data = array(':libelle' => $libelle);
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_categorie'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien ajouter la catégorie: "<b>' . $libelle . '</b>"';
-            header('location:' . URL_ADMIN . '/categorie/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_categorie'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de la categorie: "<b>' . $libelle . '</b>"';
             header('location:' . URL_ADMIN . '/categorie/ajouter.php');
             die;
         }
+
+        $success_message = 'Vous avez bien ajouter la catégorie: <b>' . $libelle . '</b>';
+
+        executeSqlUtilisateurAction('id_categorie', $bdd, action_ajouter($bdd, 1), 'categorie/', 'error_categorie', $success_message);
     }
 
     if (isset($_POST['modifier_categorie'])) {
@@ -38,17 +38,17 @@
             ':libelle' => $libelle, 
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_categorie'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien modifier la catégorie: "<b>' . $libelle . '</b>"';
-            header('location:' . URL_ADMIN . 'categorie/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_categorie'] = true;
             $_SESSION['message_error'] = 'Erreur lors de la modification de la categorie: "<b>' . $libelle . '</b>"';
             header('location:' . URL_ADMIN . 'categorie/modifier.php?id=' . $id);
             die;
         }
+
+        $success_message = 'Vous avez bien modifier la catégorie: <b>' . $libelle . '</b>';
+
+        executeSqlUtilisateurAction('id_categorie', $bdd, action_modifier_supprimer(2, $id), 'categorie/', 'error_categorie', $success_message);
+
     }
 
     if (isset($_GET['id'])) {

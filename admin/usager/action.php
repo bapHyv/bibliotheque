@@ -24,17 +24,16 @@
         ':mail' => $mail
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_usager'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . '/usager/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_usager'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . '/usager/ajouter.php');
             die;
         }
+
+        $success_message = 'Vous avez bien ajouté l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
+
+        executeSqlUtilisateurAction('id_usager', $bdd, action_ajouter($bdd, 1), 'usager/', 'error_usager', $success_message);
     }
 
     if (isset($_POST['modifier_usager'])) {
@@ -61,16 +60,15 @@
         );
 
         if ($requete->execute($data)) {
-            $_SESSION['error_usager'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien modifié l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . 'usager/index.php');
-            die;
-        } else {
             $_SESSION['error_usager'] = true;
             $_SESSION['message_error'] = 'Erreur lors de la modification de l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . 'usager/modifier.php?id=' . $id);
             die;
         }
+
+        $success_message = 'Vous avez bien modifié l\'usager: "<b>' . $prenom . ' ' . $nom . '</b>"';
+        
+        executeSqlUtilisateurAction('id_usager', $bdd, action_modifier_supprimer(2, $id), 'usager/', 'error_usager', $success_message);
     }
 
     if (isset($_GET['id'])) {

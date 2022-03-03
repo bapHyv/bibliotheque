@@ -35,17 +35,16 @@
         ':code_postal' => $code_postal 
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_utilisateur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . 'utilisateur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_utilisateur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . 'utilisateur/ajouter.php');
             die;
         }
+
+        $success_message = 'Vous avez bien ajouté l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
+
+        executeSqlUtilisateurAction('id_utilisateur', $bdd, action_ajouter($bdd, 1), 'utilisateur/', 'error_utilisateur', $success_message);
     }
 
     if (isset($_POST['modifier_utilisateur'])) {
@@ -86,17 +85,16 @@
             ':code_postal' => $code_postal 
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_utilisateur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien modifié l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . 'utilisateur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_utilisateur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de la modification de l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . 'utilisateur/modifier.php?id=' . $id);
             die;
         }
+
+        $success_message = 'Vous avez bien modifié l\'utilisateur: "<b>' . $prenom . ' ' . $nom . '</b>"';
+        
+        executeSqlUtilisateurAction('id_utilisateur', $bdd, action_modifier_supprimer(2, $id), 'utilisateur/', 'error_utilisateur', $success_message);
     }
 
     if (isset($_GET['id'])) {

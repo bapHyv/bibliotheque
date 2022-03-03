@@ -1,6 +1,7 @@
 <?php
 include '../config/config.php';
 include '../config/bdd.php';
+include '../config/functions.php';
 
 if (isset($_POST['ajouter_livre'])) {
 
@@ -30,17 +31,17 @@ if (isset($_POST['ajouter_livre'])) {
     ':disponibilite' => $disponibilite
     );
 
-    if ($requete->execute($data)) {
-       $_SESSION['error_livre'] = false;
-       $_SESSION['message_error'] = 'Vous avez bien ajouté: "<b>' . $titre . '</b>"';
-       header('location:' . URL_ADMIN . 'livre/index.php');
-       die();
-    } else {
-       $_SESSION['error_livre'] = true;
-       $_SESSION['message_error'] = 'Erreur lors de l\'ajout du livre: "<b>' . $titre . '</b>"';
-       header('location:' . URL_ADMIN . 'livre/ajouter.php');
-       die();
+    if (!$requete->execute($data)) {
+        $_SESSION['error_livre'] = true;
+        $_SESSION['message_error'] = 'Erreur lors de l\'ajout du livre: "<b>' . $titre . '</b>"';
+        header('location:' . URL_ADMIN . 'livre/ajouter.php');
+        die();
     }
+
+    $success_message = 'Vous avez bien ajouté: "<b>' . $titre . '</b>"';
+
+    executeSqlUtilisateurAction('id_livre', $bdd, action_ajouter($bdd, 1), 'livre/', 'error_livre', $success_message);
+
  }
 
 if (isset($_POST['modifier_livre'])) {
@@ -85,6 +86,11 @@ if (isset($_POST['modifier_livre'])) {
         header('location:' . URL_ADMIN . 'livre/modifier.php?id=' . $id);
         die();
     }
+
+
+    $success_message = 'Vous avez bien modifier: "<b>' . $titre . '</b>"';
+        
+    executeSqlUtilisateurAction('id_livre', $bdd, action_modifier_supprimer(2, $id), 'livre/', 'error_livre', $success_message);
 }
 
 if (isset($_GET['id'])) {

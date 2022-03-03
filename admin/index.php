@@ -1,5 +1,6 @@
 <?php
     include './config/config.php';
+    var_dump($_SESSION);
 ?>
 
         <?php include './includes/sidebar.php'; ?>

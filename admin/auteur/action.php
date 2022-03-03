@@ -1,6 +1,7 @@
 <?php
     include '../config/config.php';
     include '../config/bdd.php';
+    include '../config/functions.php';
 
     if (isset($_POST['ajouter_auteur'])) {
         $nom = htmlentities($_POST['nom']);
@@ -35,17 +36,14 @@
             ':photo' => $photo 
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_auteur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'auteur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . '/auteur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_auteur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'auteur: "<b>' . $prenom . ' ' . $nom . '</b>"';
             header('location:' . URL_ADMIN . '/auteur/ajouter.php');
-            die;
+            die;   
         }
+
+        executeSqlUtilisateurAction('id_auteur', $bdd, action_ajouter($bdd, 1), 'auteur/', 'error_auteur', 'Vous avez bien ajouté l\'auteur');
     }
 
     if (isset($_POST['modifier_auteur'])) {
@@ -84,17 +82,15 @@
             ':photo' => $photo 
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_auteur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien modifié l\'auteur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . 'auteur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_auteur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de la modification de l\'auteur: "<b>' . $prenom . ' ' . $nom . '</b>"';
-            header('location:' . URL_ADMIN . 'auteur/modifier.php?id=' . $id);
+            header('location:' . URL_ADMIN . '/auteur/ajouter.php');
             die;
         }
+
+        executeSqlUtilisateurAction('id_auteur', $bdd, action_modifier_supprimer(2, $id), 'auteur/', 'error_auteur', 'Vous avez bien modifié l\'auteur');
+
     }
 
     if (isset($_GET['id'])) {
@@ -130,17 +126,19 @@
             $sql = 'DELETE FROM auteur WHERE id = :id LIMIT 1';
             $requete = $bdd->prepare($sql);
             $data = array(':id' => $id);
-            if ($requete->execute($data)) {
-                $_SESSION['error_auteur'] = false;
-                $_SESSION['message_error'] = 'Vous avez bien supprimé l\'auteur: "<b>' . $dataAuteur[0]['prenom'] . ' ' . $dataAuteur[0]['nom'] . '</b>"';
-                header('location:' . URL_ADMIN . '/auteur/index.php');
-                die;
-            } else {
+
+            if (!$requete->execute($data)) {
                 $_SESSION['error_auteur'] = true;
                 $_SESSION['message_error'] = 'Erreur lors de la suppression de l\'auteur: "<b>' . $dataAuteur[0]['prenom'] . ' ' . $dataAuteur[0]['nom'] . '</b>"';
                 header('location:' . URL_ADMIN . '/auteur/index.php');
                 die;
             }
+
+            var_dump(action_modifier_supprimer(3,$id));
+            die;
+
+            executeSqlUtilisateurAction('id_auteur', $bdd, action_modifier_supprimer(3, $id), 'auteur/', 'error_auteur', 'Vous avez bien supprimé l\'auteur');
+
         }
     }
 ?>

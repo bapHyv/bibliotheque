@@ -26,12 +26,16 @@ if (isset($_POST['louer_livre'])) {
         ':statut' => $statut
         );
     if ($requete->execute($data)) {
-        header('location:' . URL_ADMIN . 'location/index.php');
+        header('location:' . URL_ADMIN . 'location/louer.php');
         die;
     } else {
         header('location:' . URL_ADMIN . 'location/louer.php');
         die;
     }
+
+    $success_message = 'Vous avez bien loué le livre n°= "<b>' . $id_livre . '</b>"';
+
+    executeSqlUtilisateurAction('id_location', $bdd, action_ajouter($bdd, 1), 'location/', 'error_location', $success_message);
 }
 
 if (isset($_POST['retourner_livre'])) {
@@ -60,6 +64,10 @@ if (isset($_POST['retourner_livre'])) {
         header('location:' . URL_ADMIN . 'location/retourner.php');
         die;
     }
+
+    $success_message = 'Vous avez bien retourné le livre n°= "<b>' . $id . '</b>"';
+        
+    executeSqlUtilisateurAction('id_location', $bdd, action_modifier_supprimer(2, $id), 'location/', 'error_location', $success_message);
 }
 
 ?>

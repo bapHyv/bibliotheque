@@ -2,6 +2,7 @@
 
     include '../config/bdd.php';
     include '../config/config.php';
+    include '../config/functions.php';
 
     if (isset($_POST['ajouter_editeur'])) {
         $denomination = htmlentities($_POST['denomination']);
@@ -13,7 +14,7 @@
         $numero = htmlentities($_POST['numero']);
 
         $sql = 'INSERT INTO editeur VALUE (NULL, :denomination, :siret, :adresse, :ville, :code_postal, :mail, :numero)';
-        
+
         $requete = $bdd->prepare($sql);
 
         $data = array(
@@ -26,17 +27,16 @@
         ':numero' => $numero
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_editeur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien ajouté l\'éditeur: "<b>' . $denomination . '</b>"';
-            header('location:' . URL_ADMIN . 'editeur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_editeur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de l\'ajout de l\'editeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/ajouter.php');
             die;
         }
+
+        $success_message = 'Vous avez bien ajouté l\'éditeur: "<b>' . $denomination . '</b>"';
+
+        executeSqlUtilisateurAction('id_editeur', $bdd, action_ajouter($bdd, 1), 'editeur/', 'error_editeur', $success_message);
     }
 
     if (isset($_POST['modifier_editeur'])) {
@@ -66,17 +66,17 @@
             ':numero' => $numero
         );
 
-        if ($requete->execute($data)) {
-            $_SESSION['error_editeur'] = false;
-            $_SESSION['message_error'] = 'Vous avez bien modifier l\'éditeur: "<b>' . $denomination . '</b>"';
-            header('location:' . URL_ADMIN . 'editeur/index.php');
-            die;
-        } else {
+        if (!$requete->execute($data)) {
             $_SESSION['error_editeur'] = true;
             $_SESSION['message_error'] = 'Erreur lors de la modification de l\'editeur: "<b>' . $denomination . '</b>"';
             header('location:' . URL_ADMIN . 'editeur/modifier.php?id=' . $id);
             die;
-        }
+        } 
+        
+        $success_message = 'Vous avez bien modifier l\'éditeur: "<b>' . $denomination . '</b>"';
+        
+        executeSqlUtilisateurAction('id_editeur', $bdd, action_modifier_supprimer(2, $id), 'editeur/', 'error_editeur', $success_message);
+
     }
 
     if (isset($_GET['id'])) {
